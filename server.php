@@ -5,7 +5,7 @@
     $email="";
     $errors=array();
 
-    $db=mysqli_connect('localhost','Prabhanu','12345','registration');
+    $db=mysqli_connect('localhost','root','','registration');
     if (isset($_POST['register'])){
         $username=mysqli_real_escape_string($db,$_POST['username']);
         $email=mysqli_real_escape_string($db,$_POST['email']);

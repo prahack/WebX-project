@@ -4,15 +4,14 @@
     }
 
 ?>
+<?php include('includes/header.php');?>
 <html>
 <head>
     <title>User Registration System</title>
     <link rel="stylesheet" href=css\style.css>
 </head>
-<body style="background:url(images/bg1.png);background-repeat:no-repeat;background-size:100% 100%">
-    <div class="header">
-    <h2>Home Page </h2>
-    </div>
+<body style="background:url(images/2.png);background-repeat:no-repeat;background-size:100% 100%">
+    
     <div class="content">
         <?php if(isset($_SESSION['success'])): ?>
             <div class="error success">
@@ -24,12 +23,8 @@
                 </h3>
             </div>
         <?php endif ?>
-        <?php if(isset($_SESSION['username'])): ?>
-            <p>
-                Welcome <strong> <?php echo $_SESSION['username']; ?></strong>
-            </p>
-            <p><a href="index.php?logout='1'" style="color:red;">Logout</a></p>
-        <?php endif ?>
+        
     </div>
 </body>
 </html>
+<?php include('includes/footer.php');?>
