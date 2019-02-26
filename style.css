@@ -1,0 +1,102 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    font-family: Arial;
+    font-size: 120%;
+    background: #F8F8FF;
+}
+.header0{
+    color:black;
+}
+.headerReg{
+    width: 30%;
+    margin: 50px auto 0px;
+    color:white;
+    background: gray; 
+    text-align: center;
+    border: 2px solid gray;
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+    padding:20px;
+}
+.column{
+    float:left;
+    width:45%;
+    padding:15px;
+}
+.row:after{
+    content:"";
+    display: table;
+    clear: both;
+}
+.header {
+    width: 50%;
+    margin: 50px auto 0px;
+    color:white;
+    background: gray; 
+    text-align: center;
+    border: 2px solid gray;
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+    padding:20px;
+}
+
+form, .content {
+    background:white;
+    width: 50%;
+    margin:0px auto;
+    border: 2px solid gray;
+    border-radius: 0px 0px 10px 10px;
+    padding:20px;
+    color: black;
+}
+.input-group {
+    width: 93%;
+    margin: 15px 15px 0px 0px;
+}
+.input-group label{
+    display: block;
+    text-align: left;
+    margin: 3px;
+}
+.input-group input{
+    height: 30px;
+    width: 106%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.btn {
+    padding: 10px;
+    height: 40px;
+    width: 106%;
+    font-size: 20px;
+    color: white;
+    background: green;
+    border: none;
+    border-radius: 5px;
+}
+.error {
+    width: 92%;
+    margin: 0px auto;
+    padding: 10px;
+    border: 1px solid red;
+    color:red ;
+    background: rbga(0,0,0);
+    border-radius: 5px;
+    text-align: left;
+}
+.success{
+    color: #3c763d;
+    background: #dff08d;
+    border: 1px solid #3c763d;
+    margin-bottom: 28px;
+}
+footer{
+    text-align: center;
+    color:black;
+}
