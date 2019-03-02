@@ -14,8 +14,9 @@
             <li class="active"><a href="index.php">Home</a></li>
             <li><a href="Android-development.php">Android Developing</a></li>
             <li><a href="Graphic-designing.php">Graphic Designing</a></li>
-            <li><a href="IOs-developing.php">IOs Developing</a></li>
+            <li><a href="IOs-developing.php">iOS Developing</a></li>
             <li><a href="Website-developing.php">Website Developing</a></li>
+            <li><a href="Video-editing.php">Video Editing</a></li>
             <?php if(isset($_SESSION['username'])): ?>
             <li style="float:right"><a class="active" href="index.php?logout='1'" style="color:white;">Logout</a></li>
             <?php endif ?>
