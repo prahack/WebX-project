@@ -28,6 +28,13 @@
             <input type="password" name="password_2">
         </div>
         <div class="input-group">
+            <select name="type">
+                <option>Select Type</option>
+                <option value="<?php echo $type ?>">Developer</option>
+                <option value="<?php echo $type ?>">Client</option>
+            </select>
+        </div>
+        <div class="input-group">
             <button type="submit" name="register" class="btn">Register</button>
         </div>
         <p>

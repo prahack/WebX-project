@@ -8,8 +8,15 @@ body {
     font-size: 120%;
     background: #F8F8FF;
 }
+.topic{
+    text-align: center;
+    color:green;
+}
 .header0{
-    color:black;
+    background-color: black;
+    opacity: .7;
+    filter: Alpha(opacity=50);
+    color:white;
 }
 .headerReg{
     width: 30%;
@@ -99,4 +106,9 @@ form, .content {
 footer{
     text-align: center;
     color:black;
+}
+.intro{
+    background-color: black;
+    filter: Alpha(opacity=50);
+    color:white;
 }
