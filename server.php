@@ -25,9 +25,12 @@
         if($password_1 != $password_2){
              array_push($errors,"two passwords are not match");
         }
+        if($type=="Select Type"){
+            array_push($errors,"select the type of user");
+        }
         if(count($errors)==0){
             $password=md5($password_1);
-            $sql="INSERT INTO users (username,email,password,type) VALUES('$username','$email','$password',$type)";
+            $sql="INSERT INTO users (username,email,password,type) VALUES('$username','$email','$password','$type')";
             mysqli_query($db,$sql);
             $_SESSION['username'] = $username;
             $_SESSION['success'] = "You are now logged in";

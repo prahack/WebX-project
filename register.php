@@ -30,8 +30,8 @@
         <div class="input-group">
             <select name="type">
                 <option>Select Type</option>
-                <option value="<?php echo $type ?>">Developer</option>
-                <option value="<?php echo $type ?>">Client</option>
+                <option value="developer">Developer</option>
+                <option value="client">Client</option>
             </select>
         </div>
         <div class="input-group">
