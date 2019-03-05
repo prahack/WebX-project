@@ -7,10 +7,12 @@ body {
     font-family: Arial;
     font-size: 120%;
     background: #F8F8FF;
+    
 }
 .topic{
     text-align: center;
     color:green;
+    
 }
 .header0{
     background-color: black;
@@ -38,6 +40,7 @@ body {
     content:"";
     display: table;
     clear: both;
+    
 }
 .header {
     width: 50%;

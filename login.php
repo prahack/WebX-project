@@ -5,7 +5,7 @@
     <title>User Registration System</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background:url(images/bg1.jpg);background-repeat:no-repeat;background-size:100%">
+<body style="background:url(images/bg1.jpg);background-repeat:no-repeat;background-size:100%;">
 <div class="topic">
 <h1>EM-ployer</h1>
 </div>

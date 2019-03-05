@@ -27,7 +27,7 @@
             <label>Confirm Password</label>
             <input type="password" name="password_2">
         </div>
-        <div class="input-group">
+        <div class="input-group1">
             <select name="type">
                 <option>Select Type</option>
                 <option value="developer">Developer</option>

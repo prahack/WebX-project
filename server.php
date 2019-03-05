@@ -12,7 +12,13 @@
         $password_1=mysqli_real_escape_string($db,$_POST['password_1']);
         $password_2=mysqli_real_escape_string($db,$_POST['password_2']);
         $type=mysqli_real_escape_string($db,$_POST['type']);
+        
+        $query1="SELECT * FROM users WHERE email='$email'";
+        $result1=mysqli_query($db,$query1);
 
+        if(mysqli_num_rows($result1)>0){
+            array_push($errors,"E-mail is already exist.Use another e-mail and try");
+        }
         if(empty($username)){
             array_push($errors,"User name is required");
         }
