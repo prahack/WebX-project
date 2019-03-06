@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>User Registration System</title>
+    <title>User Login System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body style="background:url(images/bg1.jpg);background-repeat:no-repeat;background-size:100%;">
