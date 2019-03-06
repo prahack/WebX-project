@@ -1,4 +1,4 @@
-<?php include('includes/header.php');?>,<br>
+<?php include('includes/header.php');?>
     <main>
         <article>
             <h1>Android Developing</h1>

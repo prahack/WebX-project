@@ -3,7 +3,7 @@
 <!--?php require_once('project/inc/functions.php'); ?-->
 <?php 
 	//checking if a user is logged in
-	if (!isset($_SESSION['ID'])){
+	if (!isset($_SESSION['username'])){
 		header('Location: index.php');
 	}
 

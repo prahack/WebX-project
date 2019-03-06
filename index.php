@@ -38,13 +38,6 @@
     width: 100%;
   }
 }
-
-/* Style the footer */
-.footer {
-  background-color: #f1f1f1;
-  padding: 10px;
-  text-align: center;
-}
 </style>
 </head>
 <body class=body>
@@ -69,9 +62,7 @@
   </div>
 </div>
 
-<div class="footer">
-  <p>Footer</p>
-</div>
+<?php include('includes/footer.php');?>
   
 </body>
 </html>
