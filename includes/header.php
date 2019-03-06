@@ -36,6 +36,7 @@
   <a href="IOs-developing.php">iOS Developing</a>
   <a href="Website-developing.php">Website Developing</a>
   <a href="Video-editing.php">Video Editing</a>
+   <a href="profile.php">Profile</a>
   <?php if(isset($_SESSION['username'])): ?>
     <a class="active" href="index.php?logout='1'" style="background-color:#ff6666; float:right; color:red;">Logout</a>
   <?php endif ?>
