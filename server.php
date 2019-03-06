@@ -5,14 +5,24 @@
     $email="";
     $errors=array();
     $type="";
+<<<<<<< HEAD
     $db=mysqli_connect('localhost','root','','registration');
+=======
+    $db=mysqli_connect('localhost','root','','webx');
+>>>>>>> 4796efc0dd55fe52a50e8b23540c1bf5428c0c51
     if (isset($_POST['register'])){
         $username=mysqli_real_escape_string($db,$_POST['username']);
         $email=mysqli_real_escape_string($db,$_POST['email']);
         $password_1=mysqli_real_escape_string($db,$_POST['password_1']);
         $password_2=mysqli_real_escape_string($db,$_POST['password_2']);
         $type=mysqli_real_escape_string($db,$_POST['type']);
+        
+        $query1="SELECT * FROM users WHERE email='$email'";
+        $result1=mysqli_query($db,$query1);
 
+        if(mysqli_num_rows($result1)>0){
+            array_push($errors,"E-mail is already exist.Use another e-mail and try");
+        }
         if(empty($username)){
             array_push($errors,"User name is required");
         }
@@ -25,9 +35,12 @@
         if($password_1 != $password_2){
              array_push($errors,"two passwords are not match");
         }
+        if($type=="Select Type"){
+            array_push($errors,"select the type of user");
+        }
         if(count($errors)==0){
             $password=md5($password_1);
-            $sql="INSERT INTO users (username,email,password,type) VALUES('$username','$email','$password',$type)";
+            $sql="INSERT INTO users (username,email,password,type) VALUES('$username','$email','$password','$type')";
             mysqli_query($db,$sql);
             $_SESSION['username'] = $username;
             $_SESSION['success'] = "You are now logged in";

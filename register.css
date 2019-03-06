@@ -4,7 +4,7 @@
     padding: 0px;
 }
 body {
-    font-family: Arial;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 120%;
     background: #F8F8FF;
 }
@@ -37,6 +37,15 @@ form, .content {
 .input-group {
     width: 93%;
     margin: 15px 15px 0px 0px;
+}
+.input-group1 select{
+    position: relative;
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+    margin: 15px 15px 0px 0px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 .input-group label{
     display: block;
