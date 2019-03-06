@@ -1,5 +1,4 @@
 <?php  session_start(); ?>
-<?php include('server.php') ?>
 <!--php require_once('project/inc/connection.php'); ?--->
 <!--?php require_once('project/inc/functions.php'); ?-->
 <?php 
@@ -11,10 +10,11 @@
 	$user_list = '';
     //getting the list of users
     $ID=$_SESSION['ID'];
-	$query = "SELECT * FROM Developer WHERE ID= '{$ID}' LIMIT 1";
+    $query = "SELECT * FROM Developer WHERE ID= '{$ID}' LIMIT 1";
+    $connection=mysqli_connect('localhost','root','','webx');
 	$result_set = mysqli_query($connection,$query);
 
-    verify_query($result_set);
+    //verify_query($result_set);
     $user = mysqli_fetch_assoc($result_set);
     $name = $user['Name'];
     $email = $user['Email'];
@@ -32,13 +32,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Users</title>
-<link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/profile.css">
+
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
 	<header>
 		<div class="appname">User Management System</div>
-		<div class="loggedin">Welcome <?php echo $_SESSION['Name'];?>! <a href="Logout.php">Log Out</a></div>
+		<div class="loggedin">Welcome <?php echo $_SESSION['name'];?>! <a href="Logout.php">Log Out</a></div>
 	</header>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
