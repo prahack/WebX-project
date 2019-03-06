@@ -1,0 +1,36 @@
+*
+.header {
+    background-image: url("looking-up-blue-sky-tall-commercial-buildings-web-header.png");
+    background-size: 100%;
+    padding: 20px;
+    text-align: center;
+    font:message-box;
+    font-style: oblique;
+    color: #000;
+    text-shadow: 2px 2px 8px #FF0000;
+}
+/* Style the topnav links */
+.topnav a {
+    float: left;
+    display: block;
+    color: blue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.topnav b {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+  /* Change color on hover */
+.topnav a:hover {
+    background-color: rgb(47, 0, 255);
+    color: black;
+}
+/*.active {background-color: rgb(47, 0, 255);}*/
