@@ -9,9 +9,7 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-}
+
 
 /* Style the top navigation bar */
 .topnav {
@@ -59,7 +57,7 @@ body {
 }
 </style>
 </head>
-<body>
+<body class=body>
 
 <?php include('includes/header.php');?>
 

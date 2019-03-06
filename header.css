@@ -1,4 +1,7 @@
 *
+body {
+    margin: 0;
+  }
 .header {
     background-image: url("looking-up-blue-sky-tall-commercial-buildings-web-header.png");
     background-size: 100%;
