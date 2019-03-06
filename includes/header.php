@@ -15,6 +15,35 @@
 </head>
 <body>
 <div class="content">
+<<<<<<< HEAD
+        <?php if(isset($_SESSION['success'])): ?>
+            <div class="error success">
+                <h3>
+                    <?php 
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                    ?>
+                </h3>
+            </div>
+        <?php endif ?>
+        
+    </div>
+    <header><h1>website name</h1></header>
+    <nav>
+        <ul class="topnav">
+            <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="Android-development.php">Android Developing</a></li>
+            <li><a href="Graphic-designing.php">Graphic Designing</a></li>
+            <li><a href="IOs-developing.php">iOS Developing</a></li>
+            <li><a href="Website-developing.php">Website Developing</a></li>
+            <li><a href="Video-editing.php">Video Editing</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <?php if(isset($_SESSION['username'])): ?>
+            <li style="float:right"><a class="active" href="index.php?logout='1'" style="color:white;">Logout</a></li>
+            <?php endif ?>
+        </ul>
+    </nav>
+=======
     <?php if(isset($_SESSION['success'])): ?>
       <div class="error success">
         <h3>
@@ -40,3 +69,4 @@
     <a class="active" href="index.php?logout='1'" style="color:white; float:right;">Logout</a>
   <?php endif ?>
 </div>
+>>>>>>> c70c5efddab1576859acfe81ed2361e1701b8222
