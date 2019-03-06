@@ -34,15 +34,13 @@
         if($type=="Select Type"){
             array_push($errors,"select the type of user");
         }
-        if(count($errors)==0 && $type=="developer"){
+        if(count($errors)==0){
             $password=md5($password_1);
             $sql="INSERT INTO users (username,email,password,type) VALUES('$username','$email','$password','$type')";
             mysqli_query($db,$sql);
             $_SESSION['username'] = $username;
             $_SESSION['success'] = "You are now logged in";
-        
             header('location: index.php');
-
         }
     }
     //log user in from login page
@@ -58,30 +56,13 @@
         }
         if(count($errors)==0){
             $password=md5($password);
-            $query1="SELECT * FROM users WHERE username='$username' AND password='$password'";
-            $result1=mysqli_query($db,$query1);
-            $query2="SELECT * FROM developer WHERE username='$username' AND password='$password'";
-            $result2=mysqli_query($db,$query2);
-            if(mysqli_num_rows($result1)==1){
-                $user = mysqli_fetch_assoc($result1);
-                $_SESSION['ID'] = $user['id'];
-                $_SESSION['success'] = "You are now logged in";
-                $_SESSION['name'] = $user['username'];
-                header('location: index.php');
-
-            }
-
-            if(mysqli_num_rows($result2)==1){
-                $user = mysqli_fetch_assoc($result2);
-                $_SESSION['ID'] = $user['ID'];
+            $query="SELECT * FROM users WHERE username='$username' AND password='$password'";
+            $result=mysqli_query($db,$query);
+            if(mysqli_num_rows($result)==1){
+                $_SESSION['username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
                 header('location: index.php');
-
-            }
-
-            
-            
-            else{
+            }else{
                 array_push($errors,"wrong username or password");
                 //header('location:login.php');
             }
