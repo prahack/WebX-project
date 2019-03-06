@@ -9,16 +9,6 @@
   box-sizing: border-box;
 }
 
-
-
-/* Style the top navigation bar */
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-
-
 /* Create three unequal columns that floats next to each other */
 .column {
   float: left;
