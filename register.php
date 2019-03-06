@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="register.css">
 </head>
 <body style="background:url(images/bg1.jpg);background-repeat:no-repeat;background-size:100% ">
+<div class="topic">
+    <h1>EM-ployer</h1>
+    </div>
     <div class="headerReg">
     <h2>Register</h2>
     </div>

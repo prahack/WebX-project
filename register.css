@@ -8,6 +8,19 @@ body {
     font-size: 120%;
     background: #F8F8FF;
 }
+.topic{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    align-items: center;
+    color:white;
+    background-color:gray;
+    height: 50px;
+    width: 97%;
+    padding: 20px;
+    text-shadow: 2px 2px 8px black;
+    display: -webkit-inline-flex;
+    
+}
 .header0{
     color:black;
 }
