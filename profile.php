@@ -9,8 +9,9 @@
 
 	$user_list = '';
     //getting the list of users
-    $ID=$_SESSION['ID'];
-    $query = "SELECT * FROM Developer WHERE ID= '{$ID}' LIMIT 1";
+    $ID=$_SESSION['id'];
+    echo $ID;
+    $query = "SELECT * FROM developer WHERE ID= '{$ID}' LIMIT 1";
     $connection=mysqli_connect('localhost','root','','webx');
 	$result_set = mysqli_query($connection,$query);
 
@@ -38,7 +39,7 @@
 <body>
 	<header>
 		<div class="appname">User Management System</div>
-		<div class="loggedin">Welcome <?php echo $_SESSION['name'];?>! <a href="Logout.php">Log Out</a></div>
+		<div class="loggedin">Welcome <?php echo $_SESSION['username'];?>! <a href="Logout.php">Log Out</a></div>
 	</header>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

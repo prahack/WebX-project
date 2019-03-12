@@ -5,7 +5,7 @@
     $email="";
     $errors=array();
     $type="";
-    $db=mysqli_connect('localhost','root','','registration');
+    $db=mysqli_connect('localhost','root','','webx');
     if (isset($_POST['register'])){
         $username=mysqli_real_escape_string($db,$_POST['username']);
         $email=mysqli_real_escape_string($db,$_POST['email']);
@@ -59,7 +59,9 @@
             $query="SELECT * FROM users WHERE username='$username' AND password='$password'";
             $result=mysqli_query($db,$query);
             if(mysqli_num_rows($result)==1){
+                $user = mysqli_fetch_assoc($result);
                 $_SESSION['username'] = $username;
+                $_SESSION['id'] = $user['id'];
                 $_SESSION['success'] = "You are now logged in";
                 header('location: index.php');
             }else{
