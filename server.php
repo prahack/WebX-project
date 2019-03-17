@@ -5,7 +5,7 @@
     $email="";
     $errors=array();
     $type="";
-    $db=mysqli_connect('localhost','root','','webx');
+    $db=mysqli_connect('localhost','Prabhanu','12345','registration');
     if (isset($_POST['register'])){
         $username=mysqli_real_escape_string($db,$_POST['username']);
         $email=mysqli_real_escape_string($db,$_POST['email']);
@@ -45,23 +45,24 @@
     }
     //log user in from login page
     if(isset($_POST['login'])){
-        $username=mysqli_real_escape_string($db,$_POST['username']);
+        $email=mysqli_real_escape_string($db,$_POST['email']);
         $password=mysqli_real_escape_string($db,$_POST['password']);
 
-        if(empty($username)){
-            array_push($errors,"User name is required");
+        if(empty($email)){
+            array_push($errors,"E-mail name is required");
         }
         if(empty($password)){
             array_push($errors,"Password is required");
         }
         if(count($errors)==0){
             $password=md5($password);
-            $query="SELECT * FROM users WHERE username='$username' AND password='$password'";
+            $query="SELECT * FROM users WHERE email='$email' AND password='$password'";
             $result=mysqli_query($db,$query);
             if(mysqli_num_rows($result)==1){
                 $user = mysqli_fetch_assoc($result);
-                $_SESSION['username'] = $username;
-                $_SESSION['id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['email'] = $email;
+                $_SESSION['id']=$user['id']; 
                 $_SESSION['success'] = "You are now logged in";
                 header('location: index.php');
             }else{
