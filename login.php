@@ -7,7 +7,7 @@
 </head>
 <body style="background:url(images/bg1.jpg);background-repeat:no-repeat;background-size:100%;">
     <div class="topic">
-    <h1>EM-ployer</h1>
+    <h1>i-Connect</h1>
     </div>
     <div class="row">
     <div class="column">
@@ -53,8 +53,8 @@
     <form method="post" action="login.php">
     <?php include('errors.php'); ?>
         <div class="input-group">
-            <label>Username</label>
-            <input type="text" name="username">
+            <label>E-mail</label>
+            <input type="text" name="email">
         </div>
         <div class="input-group">
             <label>Password</label>
