@@ -12,7 +12,7 @@
     $ID=$_SESSION['id'];
     echo $ID;
     $query = "SELECT * FROM developer WHERE ID= '{$ID}' LIMIT 1";
-    $connection=mysqli_connect('localhost','root','','webx');
+    $connection=mysqli_connect('localhost','root','','register');
 	$result_set = mysqli_query($connection,$query);
 
     //verify_query($result_set);
@@ -80,7 +80,8 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                       <!--input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"  /-->
+                       <button >  <a href="edit-profile.php">edit profile</a></button>
                     </div>
                 </div>
                 <div class="row">

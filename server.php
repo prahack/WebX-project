@@ -5,7 +5,7 @@
     $email="";
     $errors=array();
     $type="";
-    $db=mysqli_connect('localhost','root','','webx');
+    $db=mysqli_connect('localhost','root','','register');
     if (isset($_POST['register'])){
         $username=mysqli_real_escape_string($db,$_POST['username']);
         $email=mysqli_real_escape_string($db,$_POST['email']);
@@ -36,7 +36,12 @@
         }
         if(count($errors)==0){
             $password=md5($password_1);
-            $sql="INSERT INTO users (username,email,password,type) VALUES('$username','$email','$password','$type')";
+            if($type=="developer"){
+                $sql="INSERT INTO developer (Name,Email,Password) VALUES('$username','$email','$password')";
+            }
+            else{
+                $sql="INSERT INTO users (username,email,password) VALUES('$username','$email','$password')";
+            }
             mysqli_query($db,$sql);
             $_SESSION['username'] = $username;
             $_SESSION['success'] = "You are now logged in";
@@ -56,15 +61,28 @@
         }
         if(count($errors)==0){
             $password=md5($password);
-            $query="SELECT * FROM users WHERE username='$username' AND password='$password'";
-            $result=mysqli_query($db,$query);
-            if(mysqli_num_rows($result)==1){
-                $user = mysqli_fetch_assoc($result);
+            $query1="SELECT * FROM users WHERE username='$username' AND password='$password'";
+            $result1=mysqli_query($db,$query1);
+            $query2="SELECT * FROM developer WHERE Name='$username' AND Password='$password'";
+            $result2=mysqli_query($db,$query2);
+            if(mysqli_num_rows($result1)==1){
+                $user = mysqli_fetch_assoc($result1);
                 $_SESSION['username'] = $username;
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['success'] = "You are now logged in";
+                
                 header('location: index.php');
-            }else{
+            }
+            
+            if(mysqli_num_rows($result2)==1){
+                $user = mysqli_fetch_assoc($result2);
+                $_SESSION['username'] = $username;
+                $_SESSION['id'] = $user['ID'];
+                $_SESSION['success'] = "You are now logged in";
+                
+                header('location: profile.php');
+            } 
+            else{
                 array_push($errors,"wrong username or password");
                 //header('location:login.php');
             }
