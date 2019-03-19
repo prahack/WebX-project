@@ -5,7 +5,7 @@
     $email="";
     $errors=array();
     $type="";
-    $db=mysqli_connect('localhost','root','','register');
+    $db=mysqli_connect('localhost','root','','registration');
     if (isset($_POST['register'])){
         $username=mysqli_real_escape_string($db,$_POST['username']);
         $email=mysqli_real_escape_string($db,$_POST['email']);
@@ -13,7 +13,7 @@
         $password_2=mysqli_real_escape_string($db,$_POST['password_2']);
         $type=mysqli_real_escape_string($db,$_POST['type']);
         
-        $query1="SELECT * FROM users WHERE email='$email'";
+        $query1="SELECT * FROM client WHERE email='$email'";
         $result1=mysqli_query($db,$query1);
 
         if(mysqli_num_rows($result1)>0){
@@ -37,38 +37,47 @@
         if(count($errors)==0){
             $password=md5($password_1);
             if($type=="developer"){
-                $sql="INSERT INTO developer (Name,Email,Password) VALUES('$username','$email','$password')";
+                $sql="INSERT INTO developer (username,email,password) VALUES('$username','$email','$password')";
+                mysqli_query($db,$sql);
+                $_SESSION['username'] = $username;
+                $_SESSION['email'] = $email;
+                $_SESSION['type'] = $type;
+                $_SESSION['success'] = "You are now logged in";
+                header('location: developer-profile.php');
             }
             else{
-                $sql="INSERT INTO users (username,email,password) VALUES('$username','$email','$password')";
+                $sql="INSERT INTO client (username,email,password) VALUES('$username','$email','$password')";
+                mysqli_query($db,$sql);
+                $_SESSION['username'] = $username;
+                $_SESSION['email'] = $email;
+                $_SESSION['type'] = $type;
+                $_SESSION['success'] = "You are now logged in";
+                header('location: index.php');
             }
-            mysqli_query($db,$sql);
-            $_SESSION['username'] = $username;
-            $_SESSION['success'] = "You are now logged in";
-            header('location: index.php');
+   
         }
     }
     //log user in from login page
     if(isset($_POST['login'])){
-        $username=mysqli_real_escape_string($db,$_POST['username']);
+        $email=mysqli_real_escape_string($db,$_POST['email']);
         $password=mysqli_real_escape_string($db,$_POST['password']);
 
-        if(empty($username)){
-            array_push($errors,"User name is required");
+        if(empty($email)){
+            array_push($errors,"E-mail name is required");
         }
         if(empty($password)){
             array_push($errors,"Password is required");
         }
         if(count($errors)==0){
             $password=md5($password);
-            $query1="SELECT * FROM users WHERE username='$username' AND password='$password'";
+            $query1="SELECT * FROM client WHERE email='$email' AND password='$password'";
             $result1=mysqli_query($db,$query1);
-            $query2="SELECT * FROM developer WHERE Name='$username' AND Password='$password'";
+            $query2="SELECT * FROM developer WHERE email='$email' AND password='$password'";
             $result2=mysqli_query($db,$query2);
             if(mysqli_num_rows($result1)==1){
                 $user = mysqli_fetch_assoc($result1);
-                $_SESSION['username'] = $username;
-                $_SESSION['id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['email'] =$email;
                 $_SESSION['success'] = "You are now logged in";
                 
                 header('location: index.php');
@@ -76,11 +85,11 @@
             
             if(mysqli_num_rows($result2)==1){
                 $user = mysqli_fetch_assoc($result2);
-                $_SESSION['username'] = $username;
-                $_SESSION['id'] = $user['ID'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['email'] = $user['email'];
                 $_SESSION['success'] = "You are now logged in";
                 
-                header('location: profile.php');
+                header('location: developer-profile.php');
             } 
             else{
                 array_push($errors,"wrong username or password");
@@ -95,6 +104,54 @@
         session_destroy();
         unset($_SESSION['username']);
         header('location:login.php');
+    }
+
+    //shashini 
+    $clientName="";
+    $clientEmail="";
+    $devName="";
+    $devEmail="";
+    $description="";
+    $errors=array();
+    $deuration="";
+    $reqType="";
+    $db=mysqli_connect('localhost','root','','registration');
+    if (isset($_POST['request'])){
+        $clientName=mysqli_real_escape_string($db,$_POST['clientsName']);
+        $clientEmail=mysqli_real_escape_string($db,$_POST['clientsEmail']);
+        $devName=mysqli_real_escape_string($db,$_POST['developersName']);
+        $devEmail=mysqli_real_escape_string($db,$_POST['developersEmail']);
+        $description=mysqli_real_escape_string($db,$_POST['description']);;
+        $deuration=mysqli_real_escape_string($db,$_POST['period']);;
+        $reqType=mysqli_real_escape_string($db,$_POST['type']);
+        
+
+        if(empty($clientName)){
+            array_push($errors,"Client's name is required");
+        }
+        if(empty($clientEmail)){
+            array_push($errors,"Client's email is required");
+        }
+        if(empty($devName)){
+            array_push($errors,"Developer's name is required");
+        }
+        if(empty($devEmail)){
+             array_push($errors,"Developer's email is required");
+        }
+        if(empty($description)){
+            array_push($errors,"description is required");
+        }
+        if(empty($deuration)){
+            array_push($errors,"duration is required");
+        }
+        if($reqType=="Select Type of the project"){
+            array_push($errors,"type of the project is required");
+        }
+        if(count($errors)==0){
+            $sql="INSERT INTO requests (clients_name,clients_email,developers_name,developers_email,description,duration,type) VALUES('$clientName','$clientEmail','$devName','$devEmail','$description','$deuration','$reqType')";
+            mysqli_query($db,$sql);
+            header('location: request_box.php');
+        }
     }
 
 ?>

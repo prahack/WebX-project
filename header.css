@@ -2,6 +2,18 @@
 body {
     margin: 0;
   }
+  table{
+    border-collapse: collapse;
+    width: 100%;
+    color: #588c7e;
+    font-family: monospace;
+    font-size: 25px;
+    text-align: left;
+  }
+  th{
+    background-color: #588c7e;
+    color: white;
+  }
 .header {
     background-image: url("5957873074946eb.jpg");
     background-size: 100%;
@@ -27,10 +39,13 @@ body {
     padding: 14px 16px;
     text-decoration: none;  
 }
+/*.topnav a.active{
+  background-color: #4CAF50;
+  color: white;
+}*/
   /* Change color on hover */
-.topnav a:hover {
+.topnav a:hover:not(.active){
     background-color: rgb(47, 0, 255);
     color:#b3e6ff;
 }
 
-/*.active {background-color: rgb(47, 0, 255);}*/

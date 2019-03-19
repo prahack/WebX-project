@@ -27,7 +27,7 @@
     <?php endif ?>
 </div>
 <div class="header">
-  <h1>Web-X Developments :)</h1>
+  <h1>i-Connect :)</h1>
 </div>
 <div class="topnav">
   <a class="active" href="index.php">Home</a>
@@ -37,7 +37,8 @@
   <a href="Website-developing.php">Website Developing</a>
   <a href="Video-editing.php">Video Editing</a>
   <?php if(isset($_SESSION['username'])): ?>
-    <a class="active" href="index.php?logout='1'" style="background-color:#ff6666; float:right; color:red;">Logout</a>
+    <a class="active" href="index.php?logout='1'" style="background-color:#ff6666; float:right; color:white;">Logout</a>
   <?php endif ?>
-  <a href="profile.php" style="float:right">Profile</a>
+  <a href="client-profile.php" style="float:right">Profile</a>
+  <a href="request_box.php" style="float:right">My Requests</a>
 </div>

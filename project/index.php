@@ -36,7 +36,7 @@
 				if (mysqli_num_rows($result_set) == 1){
 					//valid user found
 					$user = mysqli_fetch_assoc($result_set);
-					$_SESSION['ID'] = $user['ID'];
+				
 					$_SESSION['Name'] = $user['Name'];
 					//updating last login
 					//$query = "UPDATE Developer SET last_login = NOW() ";

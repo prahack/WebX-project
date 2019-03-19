@@ -42,7 +42,7 @@
 </head>
 <body class=body>
 
-<?php include('includes/header.php');?>
+<?php include('includes/client-header.php');?>
 
 <div class="row">
   <div class="column side">

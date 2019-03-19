@@ -1,6 +1,12 @@
 body{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
+
+.divide{
+    width: 53%;
+    float: right;
+}
+
 .emp-profile{
     padding: 3%;
     margin-top: 3%;
@@ -109,3 +115,31 @@ header .appname{
 header .loggedin{
 	float: right; 
 } 
+
+.button1{
+    width: 45%;
+    display: inline-block;
+    padding : 4px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: #333;
+    background-color: whitesmoke;
+    border:  1px solid #005c99;
+    border-radius: 15px;
+    
+}
+.button2{
+    width: 50%;
+    display: inline-block;
+    padding : 4px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: #333;
+    background-color: whitesmoke;
+    border:  1px solid #005c99;
+    border-radius: 15px;
+}
