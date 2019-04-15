@@ -1,61 +1,58 @@
 
 <?php
     session_start();
-    $c_email=$_SESSION['email'];
+    require_once ('class.Database.php');
+    $c_email=$_GET['email'];
    
-    
-    
-    $username="";
-    $email="";
     $errors=array();
     $type="";
-    $db=mysqli_connect('localhost','root','','registration');
+
+    $db = Database::getInstance();
+    $connection = $db->getConnection();
 
 
 
     $query = "SELECT * FROM client WHERE email= '{$c_email}' LIMIT 1";
    
-	$result_set = mysqli_query($db,$query);
+	$result_set = mysqli_query($connection,$query);
     $user = mysqli_fetch_assoc($result_set);
-    $username = $user['username'];
+   
     $email = $user['email'];
-    
     $password=$user['password'];
-    $Phone=$user['phone'];
-
-
-
-
-
-
-
-
-
-
-
+  
 
 
     if (isset($_POST['submit'])){
-        
-        $email=mysqli_real_escape_string($db,$_POST['email']);
-        $password=mysqli_real_escape_string($db,$_POST['newpassword']);
-       $hashed_password=md5($password);
+        $currentpassword=mysqli_real_escape_string($db,$_POST['currentpassword']);
+        $currentpassword=md5($currentpassword);
+        $password1=mysqli_real_escape_string($db,$_POST['newpassword1']);
+        $password2=mysqli_real_escape_string($db,$_POST['newpassword2']);
 
         
-        //$type=mysqli_real_escape_string($db,$_POST['type']);
+        if ($password==$currentpassword){
+            if($password1==$password2){
+                $hashed_password=md5($password2);
+                $query1="UPDATE developer
+                SET  password='{$hashed_password}'
+                WHERE email='{$email}'";
+                
+                $result1=mysqli_query($db,$query1);
+                if (!$result1){
+                    echo "password update fail";
+                }
+                else{
+                    header('location: developer-profile.php');
+                }
+            }
+            else{
+                echo "not equal";
+            }
         
-        $query="UPDATE client
-        SET  password='{$hashed_password}'
-        WHERE email='{$email}'";
-
-        
-
-        $result=mysqli_query($db,$query1);
-        if (!$result){
-            echo "password update fail";
         }
-        header('location: client-profile.php');
+        else{
+            echo "current password is invalid";
         }
+    }
         
     
     
@@ -83,7 +80,7 @@
 </head>
 <body style="background:url(images/bg1.jpg);background-repeat:no-repeat;background-size:100% ">
 <div class="topic">
-    <h1>EM-ployer</h1>
+    <h1>i-Connect</h1>
     </div>
     <div class="headerReg">
     <h2>Change Password</h2>
@@ -96,12 +93,16 @@
         </div>
         <div class="input-group">
             <label>Current Password</label>
-            <input type="password" name="currentpassword" id="">
+            <input type="password" name="currentpassword" id="" required>
         </div>
         
         <div class="input-group">
             <label for="">New Password</label>
-            <input type="password" name="newpassword" id="">
+            <input type="password" name="newpassword1" id="" required>
+        </div>
+        <div class="input-group">
+            <label for="">Confirm New Password</label>
+            <input type="password" name="newpassword2" id="" required>
         </div>
   
         <div class="input-group">

@@ -1,4 +1,6 @@
-<?php  session_start(); ?>
+<?php  session_start(); 
+  require_once ('class.Database.php');?>  
+    ?>
 <!--php require_once('project/inc/connection.php'); ?--->
 <!--?php require_once('project/inc/functions.php'); ?-->
 <?php 
@@ -13,7 +15,8 @@
    
    
     $query = "SELECT * FROM client WHERE email= '{$email}' LIMIT 1";
-    $connection=mysqli_connect('localhost','root','','registration');
+    $db = Database::getInstance();
+    $connection = $db->getConnection();
     $result_set = mysqli_query($connection,$query);
   
 

@@ -12,7 +12,7 @@
     <div class="headerReg">
     <h2>Register</h2>
     </div>
-    <form method="post" action="register.php">
+    <form method="post" action="register.php" enctype="multipart/form-data">
         <?php include('errors.php'); ?>
         <div class="input-group">
             <label>Username</label>
@@ -37,6 +37,12 @@
                 <option value="client">Client</option>
             </select>
         </div>
+        <div class="input-group">
+            <label>Profile Photo</label>
+            <input type="file" name="image">
+        </div>
+        
+
         <div class="input-group">
             <button type="submit" name="register" class="btn">Register</button>
         </div>

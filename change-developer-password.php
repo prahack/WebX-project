@@ -1,60 +1,63 @@
 
 <?php
-    session_start();
-    $d_email=$_SESSION['email'];
-    
-    
-    $username="";
-    $email="";
+    require_once ('class.Database.php');
+    $d_email=$_GET['email'];
     $errors=array();
+    $errors1=array();
     $type="";
-    $db=mysqli_connect('localhost','root','','registration');
+    
+    $db = Database::getInstance();
+    $connection = $db->getConnection();
 
 
 
-    $query = "SELECT * FROM developer WHERE email= '{$email}' LIMIT 1";
+    $query = "SELECT * FROM developer WHERE email= '{$d_email}' LIMIT 1";
    
-	$result_set = mysqli_query($db,$query);
+	$result_set = mysqli_query($connection,$query);
     $user = mysqli_fetch_assoc($result_set);
-    $username = $user['name'];
+   
     $email = $user['email'];
     
     $password=$user['password'];
-    $Phone=$user['phone'];
-
-
-
-
-
-
-
-
-
-
-
-
+  
+   
 
     if (isset($_POST['submit'])){
-        
-        $email=mysqli_real_escape_string($db,$_POST['email']);
-        $password=mysqli_real_escape_string($db,$_POST['newpassword']);
-       $hashed_password=md5($password);
+        $currentpassword=mysqli_real_escape_string($connection,$_POST['currentpassword']);
+        $currentpassword=md5($currentpassword);
+        $password1=mysqli_real_escape_string($connection,$_POST['newpassword1']);
+        $password2=mysqli_real_escape_string($connection,$_POST['newpassword2']);
 
-        
-        //$type=mysqli_real_escape_string($db,$_POST['type']);
-        
-        $query1="UPDATE developer
-        SET  password='{$hashed_password}'
-        WHERE email='{$email}'";
 
+        if ($password==$currentpassword){
+            if($password1==$password2){
+                $hashed_password=md5($password2);
+                $query1="UPDATE developer
+                SET  password='{$hashed_password}'
+                WHERE email='{$email}'";
+                
+                $result1=mysqli_query($connection,$query1);
+                if (!$result1){
+                    array_push($errors,"Password update fail!");
+                }
+                else{
+                    header('location: developer-profile.php');
+                }
+            }
+            else{
+                array_push($errors,"two passwords are not match");
+            }
         
-
-        $result1=mysqli_query($db,$query1);
-        if (!$result1){
-            echo "password update fail";
         }
-        header('location: developer-profile.php');
+        else{
+            array_push($errors, "current password is invalid");
         }
+       
+    
+      
+    }
+        
+        
         
     
     
@@ -75,7 +78,8 @@
 
 
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Updating System</title>
     <link rel="stylesheet" href="register.css">
@@ -87,20 +91,21 @@
     <div class="headerReg">
     <h2>Change Password</h2>
     </div>
-    <form method="post" action="change-password.php">
-    <div class="input-group">
-            <label>Email</label>
-           
-            <input type="text" name="email" value="<?php echo $d_email; ?>">
-        </div>
+    <form method="post" action="change-developer-password.php?email=<?php echo $d_email ?>">
+    <?php include('errors.php'); ?>
+    
         <div class="input-group">
             <label>Current Password</label>
-            <input type="password" name="currentpassword" id="">
+            <input type="password" name="currentpassword" id="" required>
         </div>
         
         <div class="input-group">
             <label for="">New Password</label>
-            <input type="password" name="newpassword" id="">
+            <input type="password" name="newpassword1" id="" required>
+        </div>
+        <div class="input-group">
+            <label for="">Confirm New Password</label>
+            <input type="password" name="newpassword2" id="" required>
         </div>
   
         <div class="input-group">

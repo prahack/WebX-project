@@ -1,4 +1,6 @@
-<?php include('server.php'); ?>
+<?php include('server.php'); 
+  require_once ('class.Database.php');
+?>
 <?php 
 	//checking if a user is logged in
 	if (!isset($_SESSION['username'])){
@@ -31,7 +33,8 @@
             </tr>
             <?php
             $query = "SELECT * FROM requests WHERE developers_email='$email'";
-            $connection=mysqli_connect('localhost','root','','registration');
+            $db = Database::getInstance();
+            $connection = $db->getConnection();
             $result_set = mysqli_query($connection,$query);
 
             

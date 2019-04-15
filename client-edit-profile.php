@@ -1,6 +1,7 @@
 
 <?php
     session_start();
+    require_once ('class.Database.php');
     $email=$_SESSION['email'];
     
     
@@ -8,13 +9,15 @@
     
     $errors=array();
     $type="";
-    $db=mysqli_connect('localhost','root','','registration');
+   
 
 
 
     $query = "SELECT * FROM client WHERE email= '{$email}' LIMIT 1";
+    $db = Database::getInstance();
+    $connection = $db->getConnection();
    
-	$result_set = mysqli_query($db,$query);
+	$result_set = mysqli_query($connection,$query);
     $user = mysqli_fetch_assoc($result_set);
     $username = $user['username'];
     

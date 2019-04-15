@@ -1,4 +1,7 @@
-<?php  session_start(); ?>
+<?php  session_start();
+    require_once ('class.hashlist.php');
+
+require_once ('class.Database.php');?>
 <!--php require_once('project/inc/connection.php'); ?--->
 <!--?php require_once('project/inc/functions.php'); ?-->
 <?php 
@@ -10,10 +13,13 @@
 	$user_list = '';
     //getting the list of users
     $email=$_SESSION['email'];
-   
+    //$userr=hashlist::getUser($email);
+
     $query = "SELECT * FROM developer WHERE email= '{$email}' LIMIT 1";
    
-    $connection=mysqli_connect('localhost','root','','registration');
+    //$connection=mysqli_connect('localhost','root','','registration');
+    $db = Database::getInstance();
+    $connection = $db->getConnection();
     $result_set = mysqli_query($connection,$query);
    
 

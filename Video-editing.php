@@ -1,4 +1,6 @@
-<?php include('includes/client-header.php');?>
+<?php include('includes/client-header.php');
+  require_once ('class.Database.php');
+?>
     <main>
         <article>
             <h1>Video Editing</h1>
@@ -9,7 +11,8 @@
             </tr>
             <?php
             $query = "SELECT * FROM developer WHERE profession='video editor'";
-            $connection=mysqli_connect('localhost','root','','registration');
+            $db = Database::getInstance();
+            $connection = $db->getConnection();
             $result_set = mysqli_query($connection,$query);
 
             

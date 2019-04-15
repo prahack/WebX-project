@@ -1,4 +1,6 @@
-<?php  session_start(); ?>
+<?php  session_start(); 
+  require_once ('class.Database.php');
+?>
 <!--php require_once('project/inc/connection.php'); ?--->
 <!--?php require_once('project/inc/functions.php'); ?-->
 <?php
@@ -13,7 +15,8 @@ $d_email=$_GET['email'];
     //getting the list of users
     $email=$d_email;
     $query = "SELECT * FROM developer WHERE email= '{$email}' LIMIT 1";
-    $connection=mysqli_connect('localhost','root','','registration');
+    $db = Database::getInstance();
+    $connection = $db->getConnection();
     $result_set = mysqli_query($connection,$query);
     //$query1= "SELECT * FROM users WHERE email= '{$email}' LIMIT 1";
     //$result_set1 = mysqli_query($connection,$query1);

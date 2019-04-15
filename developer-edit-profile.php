@@ -1,5 +1,6 @@
 
 <?php
+    require_once ('class.Database.php');
     session_start();
     $email=$_SESSION['email'];
     
@@ -8,13 +9,15 @@
     
     $errors=array();
     $type="";
-    $db=mysqli_connect('localhost','root','','registration');
+    
 
 
 
     $query = "SELECT * FROM developer WHERE email= '{$email}' LIMIT 1";
+    $db = Database::getInstance();
+    $connection = $db->getConnection();
    
-	$result_set = mysqli_query($db,$query);
+	$result_set = mysqli_query($connection,$query);
     $user = mysqli_fetch_assoc($result_set);
     $username = $user['username'];
    
@@ -38,11 +41,11 @@
 
     if (isset($_POST['update'])){
         
-        $username=mysqli_real_escape_string($db,$_POST['username']);
-        $email=mysqli_real_escape_string($db,$_POST['email']);
-        $password_1=mysqli_real_escape_string($db,$_POST['password_1']);
-        $password_2=mysqli_real_escape_string($db,$_POST['password_2']);
-        $phone=mysqli_real_escape_string($db,$_POST['Phone']);
+        $username=mysqli_real_escape_string($connection,$_POST['username']);
+        $email=mysqli_real_escape_string($connection,$_POST['email']);
+        $password_1=mysqli_real_escape_string($connection,$_POST['password_1']);
+        $password_2=mysqli_real_escape_string($connection,$_POST['password_2']);
+        $phone=mysqli_real_escape_string($connection,$_POST['Phone']);
 
         if($password_1==null){
             $password_1=$password;
@@ -55,7 +58,7 @@
 
         
 
-        $result1=mysqli_query($db,$query1);
+        $result1=mysqli_query($connection,$query1);
         if (!$result1){
             echo "update fail";
         }
@@ -81,7 +84,8 @@
 
 
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Updating System</title>
     <link rel="stylesheet" href="register.css">
