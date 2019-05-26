@@ -23,25 +23,25 @@
 
 
     if (isset($_POST['submit'])){
-        $currentpassword=mysqli_real_escape_string($db,$_POST['currentpassword']);
+        $currentpassword=mysqli_real_escape_string($connection,$_POST['currentpassword']);
         $currentpassword=md5($currentpassword);
-        $password1=mysqli_real_escape_string($db,$_POST['newpassword1']);
-        $password2=mysqli_real_escape_string($db,$_POST['newpassword2']);
+        $password1=mysqli_real_escape_string($connection,$_POST['newpassword1']);
+        $password2=mysqli_real_escape_string($connection,$_POST['newpassword2']);
 
         
         if ($password==$currentpassword){
             if($password1==$password2){
                 $hashed_password=md5($password2);
-                $query1="UPDATE developer
+                $query1="UPDATE client
                 SET  password='{$hashed_password}'
                 WHERE email='{$email}'";
                 
-                $result1=mysqli_query($db,$query1);
+                $result1=mysqli_query($connection,$query1);
                 if (!$result1){
                     echo "password update fail";
                 }
                 else{
-                    header('location: developer-profile.php');
+                    header('location: client-profile.php');
                 }
             }
             else{
@@ -85,7 +85,7 @@
     <div class="headerReg">
     <h2>Change Password</h2>
     </div>
-    <form method="post" action="change-password.php">
+    <form method="post" action="change-client-password.php?email=<?php echo $c_email ?>">
     <div class="input-group">
             <label>Email</label>
             <input type="text" name="email" value="<?php echo $c_email?>">
