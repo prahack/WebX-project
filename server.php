@@ -12,13 +12,26 @@
     $connection = $db->getConnection();
 
     if (isset($_POST['register'])){
+
+
+       
+        //$mysqli->query("INSERT INTO developer(profile_photo) VALUES ('" . $hex_string . "')");
+
         $username=mysqli_real_escape_string($connection,$_POST['username']);
         $email=mysqli_real_escape_string($connection,$_POST['email']);
         $password_1=mysqli_real_escape_string($connection,$_POST['password_1']);
         $password_2=mysqli_real_escape_string($connection,$_POST['password_2']);
         $type=mysqli_real_escape_string($connection,$_POST['type']);
-        $imageName=$_FILES["image"]["name"];
-        $filename=file_get_contents($_FILES["image"]["tmp_name"]);
+        $field=mysqli_real_escape_string($connection,$_POST['field']);
+
+        $imageName=$_FILES["file"]["name"];
+        //$filename=file_get_contents($_FILES["image"]["tmp_name"]);
+
+        echo $username;
+        echo $email;
+        echo $type;
+
+        
 
         
         $query1="SELECT * FROM client WHERE email='$email'";
@@ -45,14 +58,15 @@
         if(count($errors1)==0){
             $password=md5($password_1);
             if($type=="developer"){
-                $sql="INSERT INTO developer (username,email,password,profile_photo,name) VALUES('$username','$email','$password','$filename','$imageName')";
-                mysqli_query($db,$sql);
+                echo $username;
+                $sql="INSERT INTO developer (username,email,password,name,developer_type) VALUES('$username','$email','$password','$imageName','$field')";
+                mysqli_query($connection,$sql);
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $email;
                 $_SESSION['type'] = $type;
                 $_SESSION['success'] = "You are now logged in";
                 
-               header('location: developer-profile.php');
+               //header('location: developer-profile.php');
             }
             else{
                 $sql="INSERT INTO client (username,email,password) VALUES('$username','$email','$password')";
@@ -99,16 +113,17 @@
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['success'] = "You are now logged in";
-                
+                $user11 = new User($user['username']);
+                HashList::setUsers($user11,$email);
                 header('location: developer-profile.php');
             } 
             else{
+               
                 array_push($errors1,"wrong username or password");
                 //header('location:login.php');
             }
         }
     }
-
 
     //logout
     if(isset($_GET['logout'])){
