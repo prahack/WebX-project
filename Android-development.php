@@ -9,6 +9,46 @@
     $username=$_SESSION['username'];
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="developer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <?php
+    $search="";
+    $output = NULL;
+    if (isset($_POST['submit'])){
+        //connect to the database
+        $mysqli = NEW MySQLi("localhost","root","","registration");
+        //query the database
+        $resultSet = $mysqli ->query("SELECT * FROM developer WHERE username = '$search'");
+        if($resultSet -> num_rows > 0){
+
+        }else{
+            $output = "No results";
+        }
+        $search=mysqli_real_escape_string($connection,$_POST['search']);
+        //$search = $mysqli ->real_escape_string($_POST['search']);
+        echo $search;
+    }
+    ?>
+    <form method="POST" class="example" action="Android-development.php"style="margin:auto;max-width:300px;float:right">
+    <input type="text" placeholder="Search.." name="search"/>
+    <button type="submit" name="submit" value="Search"/><i class="fa fa-search"></i></button>
+    </form>
+
+    <?php echo $output;
+
+    ?>
+</body>
+</html>
 
 
     <main>
