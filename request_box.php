@@ -23,6 +23,7 @@
             <th>Discription</th>
             <th>Duration</th>
             <th>Type</th>
+            <th>Status</th>
             </tr>
             <?php
             $query = "SELECT * FROM requests WHERE clients_email='$email'";
@@ -50,7 +51,10 @@
                 echo $row['duration'];
                 echo "</td><td>";
                 echo $row['type'];
+                echo "</td><td>";
+                echo $row['status'];
                 echo "</td></tr>";
+
             }
 
             ?>
