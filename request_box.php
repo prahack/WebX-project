@@ -11,54 +11,93 @@
     $username=$_SESSION['username'];
     //echo $email;
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="request_box.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"> <i class="far fa-hand-point-up"></i></button> 
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
 
 
+<div>
     <main>
         <article>
             <h1>My Request Box</h1>
-            <table>
-            <tr>
-            <th>Developer's Name</th>
-            <th>Developer's Email</th>
-            <th>Discription</th>
-            <th>Duration</th>
-            <th>Type</th>
-            <th>Status</th>
-            </tr>
             <?php
             $query = "SELECT * FROM requests WHERE clients_email='$email'";
             $db = Database::getInstance();
             $connection = $db->getConnection();
-
             $result_set = mysqli_query($connection,$query);
-
-            
-
             while ($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
                 //$query0="SELECT * FROM users WHERE email='{$row['email']}' LIMIT 1";
                 //$result_set0 = mysqli_query($connection,$query0);
                 //$req = mysqli_fetch_assoc($result_set0);
                 $d_email=$row['developers_email'];
-                echo "<tr><td>";
-                echo "<a href='view_profile.php?email=$d_email'>";
-                echo $row['developers_name'];
-                echo "</a>";
-                echo "</td><td>";
-                echo $row['developers_email'];
-                echo "</td><td>";
-                echo $row['description'];
-                echo "</td><td>";
-                echo $row['duration'];
-                echo "</td><td>";
-                echo $row['type'];
-                echo "</td><td>";
-                echo $row['status'];
-                echo "</td></tr>";
-
+                echo "<div class='raw'>";
+                    echo "<div class='column'>";
+                        echo "<div class='card'>";
+                            echo "<p>";
+                                echo "Developer's Name : ";
+                                echo "<a href='view_profile.php?email=$d_email'>";
+                                echo $row['developers_name'];
+                                echo "</a>";
+                            echo "</p>";
+                            echo "<p>";
+                                echo "Developer's Email : ";
+                                echo $row['developers_email'];
+                            echo "</p>";
+                            echo "<p>";
+                                echo "Description : ";
+                                echo $row['description'];
+                            echo "</p>";
+                            echo "</p>";
+                                echo "Duration : ";
+                                echo $row['duration'];
+                            echo "</p>";
+                            echo "<p>";
+                                echo "Type : ";
+                                echo $row['type'];
+                            echo "</p>";
+                            echo "<p>";
+                                echo "Status : ";
+                                echo $row['status'];
+                            echo "</p>";
+                        echo "</div>";
+                        echo "<br>";
+                    echo "</div>";
+                echo "</div>";
             }
-
             ?>
-            </table>
+            
         </article>
     </main>
+    <hr>
+</div>
 <?php include('includes/footer.php');?>
