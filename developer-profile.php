@@ -32,6 +32,9 @@ require_once ('class.Database.php');?>
         $linkedin = $user['linkedIn'];
         $ranking = $user['ranking'];
         $description = $user['description'];
+
+    
+
         $image = '<img src = "data:image/jpeg;base64,'.base64_encode($user['profile_photo']).'" height="200" width = "200"/>';
     }
     //verify_query($result_set);
@@ -49,7 +52,7 @@ require_once ('class.Database.php');?>
 </head>
 <body>
 	<header>
-		<div class="appname">User Management System</div>
+		<div class="appname">i-Connect</div>
 		<div class="loggedin">Welcome <?php echo $_SESSION['username'];?>! <a href="login.php">Log Out</a></div>
 	</header>
 
@@ -63,7 +66,9 @@ require_once ('class.Database.php');?>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                        <img src='profilePic.jpg' alt=""/>
+                        <img src='profilePic.jpg' alt=""/> 
+                        
+                       
                             <!--?php echo $image?>-->
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
