@@ -1,5 +1,7 @@
 <?php include('includes/client-header.php');
   require_once ('class.Database.php');
+  require_once ('class.DevelopersListAdapter.php');
+  require_once ('class.DevelopersList.php');
 ?>
     <main>
         <article>
@@ -15,10 +17,11 @@
             $db = Database::getInstance();
             $connection = $db->getConnection();
             $result_set = mysqli_query($connection,$query);
-
+            $developerList=new DevelopersListAdapter(new DevelopersList());
+            $developerList->viewDevelopersList($result_set);
             
 
-            while ($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
+            /*while ($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
                 //$query0="SELECT * FROM users WHERE email='{$row['email']}' LIMIT 1";
                 //$result_set0 = mysqli_query($connection,$query0);
                 //$user = mysqli_fetch_assoc($result_set0);
@@ -32,7 +35,7 @@
                 //echo "</td><td>";
                 //echo $row['linkedin'];
                 echo "</td></tr>";
-            }
+            }*/
 
             ?>
             </table>
