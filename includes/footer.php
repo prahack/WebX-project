@@ -9,6 +9,6 @@
 </head>
 
 <div class="footer">
-  <p>Company name | Address | Tel:555 555 5555</p>
+  <p>WebX | Moratuwa | Tel:555 555 5555</p>
 </div>
 </html>
