@@ -114,7 +114,7 @@
   
         <div class="input-group">
             <label>Phone</label>
-            <input type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="Phone" value=<?php echo $phone;?>>
+            <input type="tel" pattern="[0]{1}[0-9]{9}" name="Phone" value=<?php echo $phone;?>>
         </div>
         
         <div class="input-group">
