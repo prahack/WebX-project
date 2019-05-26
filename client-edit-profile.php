@@ -42,23 +42,21 @@
     if (isset($_POST['update'])){
         
         //$username=mysqli_real_escape_string($db,$_POST['username']);
-        $email=mysqli_real_escape_string($db,$_POST['email']);
-        $password_1=mysqli_real_escape_string($db,$_POST['password_1']);
-        $password_2=mysqli_real_escape_string($db,$_POST['password_2']);
-        $phone=mysqli_real_escape_string($db,$_POST['Phone']);
+        $email=mysqli_real_escape_string($connection,$_POST['email']);
+        
+        $phone=mysqli_real_escape_string($connection,$_POST['Phone']);
 
-        if($password_1==null){
-            $password_1=$password;
-        }
+
+        
         //$type=mysqli_real_escape_string($db,$_POST['type']);
         
         $query1="UPDATE client
-        SET username = '{$username}', email = '{$email}', password='{$password_1}', phone='{$phone}'
+        SET username = '{$username}', email = '{$email}', phone='{$phone}'
         WHERE email='{$email}'";
 
         
 
-        $result1=mysqli_query($db,$query1);
+        $result1=mysqli_query($connection,$query1);
         if (!$result1){
             echo "update fail";
         }
@@ -104,7 +102,7 @@
         </div>
         <div class="input-group">
             <label>Email</label>
-            <input type="text" name="email" value=<?php echo $email; ?>>
+            <input type="text" name="email" value=<?php echo $email; ?> readonly>
         </div>
         <div class="input-group">
             <label for="">Password</label>
@@ -113,7 +111,7 @@
   
         <div class="input-group">
             <label>Phone</label>
-            <input type="text" name="Phone" value=<?php echo $phone;?>>
+            <input type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="Phone" value=<?php echo $phone;?>>
         </div>
         
         <div class="input-group">
