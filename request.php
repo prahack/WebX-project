@@ -36,19 +36,19 @@ if(isset($_SERVER['HTTP_REFERER'])) {
         <?php include('errors.php'); ?>
         <div class="input-group">
             <label>Client's Username</label>
-            <input type="text" name="clientsName" value="<?php echo $username; ?>">
+            <input type="text" name="clientsName" value="<?php echo $username; ?>" readonly>
         </div>
         <div class="input-group">
             <label>Client's Email</label>
-            <input type="text" name="clientsEmail" value="<?php echo $email; ?>">
+            <input type="text" name="clientsEmail" value="<?php echo $email; ?>" readonly>
         </div>
         <div class="input-group">
             <label>Developers's Username</label>
-            <input type="text" name="developersName" value="<?php echo $dev_name; ?>">
+            <input type="text" name="developersName" value="<?php echo $dev_name; ?>" readonly>
         </div>
         <div class="input-group">
             <label>Developer's Email</label>
-            <input type="text" name="developersEmail" value="<?php echo $dev_email; ?>">
+            <input type="text" name="developersEmail" value="<?php echo $dev_email; ?>" readonly>
         </div>
         <div class="input-group">
             <label>Description about the project</label>
