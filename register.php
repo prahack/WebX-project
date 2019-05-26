@@ -20,8 +20,9 @@
         </div>
         <div class="input-group">
             <label>Email</label>
-            <input type="text" name="email" value="<?php echo $email; ?>">
+            <input type="email" name="email" value="<?php echo $email; ?>">
         </div>
+
         <div class="input-group">
             <label>Password</label>
             <input type="password" name="password_1">
@@ -31,15 +32,21 @@
             <input type="password" name="password_2">
         </div>
         <div class="input-group1">
-            <select name="type">
+            <select name="type" id="dropdown">
                 <option>Select Type</option>
                 <option value="developer">Developer</option>
                 <option value="client">Client</option>
             </select>
+
+            <select name="field" id="developerDropdown">
+                <option>Select Field</option>
+                <option value="AndroidDeveloper">Android-Developer</option>
+                <option value="graphicDesigner">Graphic-Designer</option>
+            </select>
         </div>
         <div class="input-group">
             <label>Profile Photo</label>
-            <input type="file" name="image">
+            <input type="file" name="file">
         </div>
         
 
@@ -57,3 +64,23 @@
     </footer>
 </body>
 </html>
+
+
+<script>
+ document.getElementById("developerDropdown").style.display="none";
+ document.getElementById("dropdown").addEventListener('change',notify);
+  
+  function notify(event){
+    var selected = document.getElementById("dropdown");
+    var selectedType = selected.options[selected.selectedIndex].text;
+    if (selectedType=="Developer"){
+        document.getElementById("developerDropdown").style.display="initial";
+     
+ }
+    else{
+        document.getElementById("developerDropdown").style.display="none";
+    }
+  }
+
+
+</script>
