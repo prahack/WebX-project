@@ -1,5 +1,8 @@
 <?php include('server.php'); 
   require_once ('class.Database.php');
+  require_once ('class.Request.php');
+  require_once ('class.PendingState.php');
+
 ?>
 <?php 
 	//checking if a user is logged in
