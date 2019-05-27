@@ -26,7 +26,7 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="topFunction()" id="myBtn" title="Go to top"> <i class="far fa-hand-point-up"></i></button>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"> <i class="fas fa-arrow-up"></i></button>
     
 <header>
 <button class="button" style="vertical-align:middle; float:right;"><span><a href="developer-profile.php?" style= "float:right;">Back</a>
