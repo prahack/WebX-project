@@ -100,6 +100,7 @@
                 $_SESSION['username']=$user['username'];
                 $_SESSION['email'] =$email;
                 $_SESSION['c'] =$client->getName();
+                $_SESSION['cp'] =$client->username;
                 //echo $client->getName();
                 $_SESSION['success'] = "You are now logged in";
                 $user11 = new User($user['username']);
