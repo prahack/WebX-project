@@ -1,7 +1,7 @@
 <?php  session_start();
     require_once ('class.hashlist.php');
 
-require_once ('class.Database.php');?>
+    require_once ('class.Database.php');?>
 <!--php require_once('project/inc/connection.php'); ?--->
 <!--?php require_once('project/inc/functions.php'); ?-->
 <?php 
