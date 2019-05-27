@@ -8,6 +8,7 @@ class Request{
     private $clientName;
     private $duration;
     private $description;
+    private $state;
 
     public function __construct($id,$clientEmail,$clientName,$devEmail,$devName,$duration,$description){
         $this->id=$id;
@@ -17,6 +18,7 @@ class Request{
         $this->clientName=$clientName;
         $this->duration=$duration;
         $this->description=$description;
+        $this->state=new PendingState();
     }
 
     public function getClientName(){
@@ -43,6 +45,12 @@ class Request{
         return $this->description;
     }
     
+    public function setState($state){
+        $this->state=$state;
+    }
+    public function returnState(){
+        return $this->state;
+    }
 }
 
 ?>
