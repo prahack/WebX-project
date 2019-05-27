@@ -1,5 +1,6 @@
 <?php include('includes/client-header.php');
   require_once ('class.Database.php');
+  require_once ('class.Request.php');
 ?>
 <?php 
 	//checking if a user is logged in
@@ -55,6 +56,8 @@
             $db = Database::getInstance();
             $connection = $db->getConnection();
             $result_set = mysqli_query($connection,$query);
+            $q="SELECT * FROM objreq";
+            $rs=mysqli_query($connection,$q);
             while ($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
                 //$query0="SELECT * FROM users WHERE email='{$row['email']}' LIMIT 1";
                 //$result_set0 = mysqli_query($connection,$query0);
@@ -93,6 +96,13 @@
                         echo "<br>";
                     echo "</div>";
                 echo "</div>";
+            }
+            while ($row=mysqli_fetch_array($rs,MYSQLI_ASSOC)){
+                //echo $row['req'];
+                $req=unserialize($row['req']);
+                //echo $req;
+                echo $req->getClientName();
+                echo $req->returnState()->getState();
             }
             ?>
             

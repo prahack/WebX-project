@@ -4,6 +4,13 @@
     require_once ('class.Database.php');
     require_once ('class.user.php');
     require_once ('class.hashlist.php');
+    require_once ('class.DeveloperAccount.php');
+    require_once ('class.ClientAccount.php');
+    require_once ('class.Request.php');
+    require_once ('class.PendingState.php');
+    require_once ('class.State.php');
+
+
     $username="";
     $email="";
     $errors1=array();
@@ -12,26 +19,13 @@
     $connection = $db->getConnection();
 
     if (isset($_POST['register'])){
-
-
-       
-        //$mysqli->query("INSERT INTO developer(profile_photo) VALUES ('" . $hex_string . "')");
-
         $username=mysqli_real_escape_string($connection,$_POST['username']);
         $email=mysqli_real_escape_string($connection,$_POST['email']);
         $password_1=mysqli_real_escape_string($connection,$_POST['password_1']);
         $password_2=mysqli_real_escape_string($connection,$_POST['password_2']);
         $type=mysqli_real_escape_string($connection,$_POST['type']);
-        $field=mysqli_real_escape_string($connection,$_POST['field']);
-
-        $imageName=$_FILES["file"]["name"];
-        //$filename=file_get_contents($_FILES["image"]["tmp_name"]);
-
-        echo $username;
-        echo $email;
-        echo $type;
-
-        
+        $imageName=$_FILES["image"]["name"];
+        $filename=file_get_contents($_FILES["image"]["tmp_name"]);
 
         
         $query1="SELECT * FROM client WHERE email='$email'";
@@ -56,17 +50,17 @@
             array_push($errors1,"select the type of user");
         }
         if(count($errors1)==0){
+            
             $password=md5($password_1);
             if($type=="developer"){
-                echo $username;
-                $sql="INSERT INTO developer (username,email,password,name,developer_type) VALUES('$username','$email','$password','$imageName','$field')";
-                mysqli_query($connection,$sql);
+                $sql="INSERT INTO developer (username,email,password) VALUES('$username','$email','$password')";
+                mysqli_query($db,$sql);
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $email;
                 $_SESSION['type'] = $type;
                 $_SESSION['success'] = "You are now logged in";
                 
-               //header('location: developer-profile.php');
+               header('location: developer-profile.php');
             }
             else{
                 $sql="INSERT INTO client (username,email,password) VALUES('$username','$email','$password')";
@@ -99,31 +93,35 @@
             $result2=mysqli_query($connection,$query2);
             if(mysqli_num_rows($result1)==1){
                 $user = mysqli_fetch_assoc($result1);
-                $_SESSION['username'] = $user['username'];
+
+                $client=new ClientAccount($user['username'],$user['email'],$user['password'],"client");
+
+                //$_SESSION['username'] = $user['username'];
+                $_SESSION['username']=$user['username'];
                 $_SESSION['email'] =$email;
+                $_SESSION['c'] =$client->getName();
+                //echo $client->getName();
                 $_SESSION['success'] = "You are now logged in";
                 $user11 = new User($user['username']);
                 HashList::setUsers($user11,$email);
 
                 header('location: index.php');
             }
-            
             if(mysqli_num_rows($result2)==1){
                 $user = mysqli_fetch_assoc($result2);
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['success'] = "You are now logged in";
-                $user11 = new User($user['username']);
-                HashList::setUsers($user11,$email);
+                
                 header('location: developer-profile.php');
             } 
             else{
-               
                 array_push($errors1,"wrong username or password");
                 //header('location:login.php');
             }
         }
     }
+
 
     //logout
     if(isset($_GET['logout'])){
@@ -174,8 +172,13 @@
             array_push($errors,"type of the project is required");
         }
         if(count($errors)==0){
-            $sql="INSERT INTO requests (clients_name,clients_email,developers_name,developers_email,description,duration,type) VALUES('$clientName','$clientEmail','$devName','$devEmail','$description','$deuration','$reqType')";
+            $request=new Request(1,$clientEmail,$clientName,$devEmail,$devEmail,$deuration,$description);
+            $req=serialize($request);
+            $sql0="INSERT INTO objreq (req) VALUES('$req')";
+            $cn=$request->getClientName();
+            $sql="INSERT INTO requests (clients_name,clients_email,developers_name,developers_email,description,duration,type) VALUES('$cn','$clientEmail','$devName','$devEmail','$description','$deuration','$reqType')";
             mysqli_query($connection,$sql);
+            mysqli_query($connection,$sql0);
             header('location: request_box.php');
         }
     }

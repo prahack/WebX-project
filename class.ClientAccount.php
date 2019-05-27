@@ -1,5 +1,5 @@
 <?php
-//require_once('class.UserAccount.php');
+require_once('class.UserAccount.php');
 class ClientAccount extends UserAccount{
     public function __construct($username,$useremail,$password,$usertype){
         parent::__construct($username,$useremail,$password,$usertype);   
