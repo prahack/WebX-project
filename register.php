@@ -20,7 +20,7 @@
         </div>
         <div class="input-group">
             <label>Email</label>
-            <input type="email" placeholder="you@example.com" pattern ='/[a-z0-9_\-\+]+@[a-z0-9\-]+\.([a-z]{2,3})(?:\.[a-z]{2})?/i' name="email" value="<?php echo $email; ?>">
+            <input type="email" placeholder="you@example.com"  name="email" value="<?php echo $email; ?>">
         </div>
 
         <div class="input-group">
@@ -29,8 +29,8 @@
         </div>
 
         <div class="input-group">
-            <label>Password</label>
-            <input type="password" placeholder="Create a password" name="password_1">
+            <label>Password (8 characters minimum)</label>
+            <input type="password" placeholder="Create a password" name="password_1"  minlength="8" required>
         </div>
         <div class="input-group">
             <label>Confirm Password</label>
