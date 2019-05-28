@@ -4,7 +4,7 @@ class CancelState extends State{
 
     }
     public function getState(){
-        return "cancel";
+        return "canceled";
     }
 }
 ?> 

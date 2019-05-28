@@ -7,7 +7,7 @@ class ConfirmState extends State{
         $request->setState(new ConfirmState());
     }
     public function getState(){
-        return "confirm";
+        return "confirmed";
     }
 }
 ?>

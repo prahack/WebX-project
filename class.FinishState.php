@@ -4,7 +4,7 @@ class FinishState extends State{
 
     }
     public function getState(){
-        return "finish";
+        return "finished";
     }
 }
 ?>
