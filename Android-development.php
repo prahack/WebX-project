@@ -1,5 +1,7 @@
 <?php include('includes/client-header.php');
 require_once ('class.Database.php');
+require_once ('class.DevelopersListAdapter.php');
+
 ?>
 <?php 
     $db = Database::getInstance();
@@ -71,7 +73,14 @@ require_once ('class.Database.php');
 
             </tr>
             <?php
-            $query = "SELECT * FROM developer WHERE profession='android developer'";
+
+                $query = "SELECT * FROM developer WHERE profession='AndroidDeveloper'";
+                $db = Database::getInstance();
+                $connection = $db->getConnection();
+                $result_set = mysqli_query($connection,$query);
+                $developerList=new DevelopersListAdapter(new DevelopersList());
+                $developerList->viewDevelopersList($result_set);
+            /*$query = "SELECT * FROM developer WHERE profession='android developer'";
             //$connection=mysqli_connect('localhost','root','','registration');
             $result_set = mysqli_query($connection,$query);
 
@@ -91,7 +100,7 @@ require_once ('class.Database.php');
                 //echo "</td><td>";
                 //echo $row['linkedin'];
                 echo "</td></tr>";
-            }
+            }*/
 
             ?>
             </table>
