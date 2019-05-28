@@ -54,7 +54,7 @@
             
             $password=md5($password_1);
             if($type=="developer"){
-                $sql="INSERT INTO developer (username,email,password,developer_type) VALUES('$username','$email','$password','$field')";
+                $sql="INSERT INTO developer (username,email,password,developer_type,phone) VALUES('$username','$email','$password','$field','$phone')";
                 mysqli_query($connection,$sql);
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $email;
