@@ -105,7 +105,7 @@
         </div>
         <div class="input-group">
             <label>Email</label>
-            <input type="email" name="email" value=<?php echo $email; ?>>
+            <input type="email" name="email" value=<?php echo $email; ?> readonly>
         </div>
         <div class="input-group">
             <label for="">Password</label>
