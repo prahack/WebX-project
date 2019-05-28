@@ -14,18 +14,16 @@
     <link rel="stylesheet" href="header.css">
 </head>
 <body>
-<div class="content">
+
     <?php if(isset($_SESSION['success'])): ?>
-      <div class="error success">
-        <h3>
+      
           <?php
-            echo $_SESSION['success'];
+            //echo $_SESSION['success'];
             unset($_SESSION['success']);
           ?>
-        </h3>
-      </div>
+        
     <?php endif ?>
-</div>
+
 <div class="header">
   <h1>i-Connect :)</h1>
 </div>
