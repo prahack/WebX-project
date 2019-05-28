@@ -16,25 +16,25 @@
         <?php include('errors.php'); ?>
         <div class="input-group">
             <label>Username</label>
-            <input type="text" name="username" value="<?php echo $username; ?>">
+            <input type="text" placeholder="Pick a username" name="username" value="<?php echo $username; ?>">
         </div>
         <div class="input-group">
             <label>Email</label>
-            <input type="email" name="email" value="<?php echo $email; ?>">
+            <input type="email" placeholder="you@example.com" pattern ='/[a-z0-9_\-\+]+@[a-z0-9\-]+\.([a-z]{2,3})(?:\.[a-z]{2})?/i' name="email" value="<?php echo $email; ?>">
         </div>
 
         <div class="input-group">
             <label>Phone</label>
-            <input type="tel" pattern="[0]{1}[0-9]{9}" name="phone" >
+            <input type="tel" placeholder="0xxxxxxxxx" pattern="[0]{1}[0-9]{9}" name="phone" >
         </div>
 
         <div class="input-group">
             <label>Password</label>
-            <input type="password" name="password_1">
+            <input type="password" placeholder="Create a password" name="password_1">
         </div>
         <div class="input-group">
             <label>Confirm Password</label>
-            <input type="password" name="password_2">
+            <input type="password" placeholder="Re-enter password" name="password_2">
         </div>
         <div class="input-group1">
             <select name="type" id="dropdown">
