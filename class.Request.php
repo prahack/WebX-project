@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set("Asia/Colombo");
 class Request{
     private $id;
     private $devEmail;
@@ -9,6 +9,10 @@ class Request{
     private $duration;
     private $description;
     private $state;
+    private $timeStamp;
+    private $clientRating;
+    private $devRating;
+    private $cancelTime;
 
     public function __construct($id,$clientEmail,$clientName,$devEmail,$devName,$duration,$description){
         $this->id=$id;
@@ -19,6 +23,17 @@ class Request{
         $this->duration=$duration;
         $this->description=$description;
         $this->state=new PendingState();
+        $this->timeStamp=time();
+        $this->clientRating="not yet";
+        $this->devRating="not yet";
+        //$this->cancelTime=date("t");
+        $m=date("M");
+        $d=date("d")+1;
+        $y=date("Y");
+        $h=date("H");
+        $i=date("i");
+        $this->cancelTime=$m."-".$d."-".$y." at ".$h.":".$i."H";
+
     }
 
     public function getClientName(){
@@ -44,12 +59,34 @@ class Request{
     public function getDescription(){
         return $this->description;
     }
+
+    public function getTimeStamp(){
+        return $this->timeStamp;
+    }
     
     public function setState($state){
         $this->state=$state;
     }
     public function returnState(){
         return $this->state;
+    }
+
+    public function getClientRating(){
+        return $this->clientRating;
+    }
+    public function setClientRating($crating){
+        $this->clientRating=$crating;
+    }
+
+    public function getDevRating(){
+        return $this->devRating;
+    }
+    public function setDevRating($drating){
+        $this->devRating=$drating;
+    }
+
+    public function getCTime(){
+        return $this->cancelTime;
     }
 }
 
