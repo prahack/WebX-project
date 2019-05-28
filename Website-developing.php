@@ -13,7 +13,7 @@
             <!--th>LinkedIn</th-->
             </tr>
             <?php
-            $query = "SELECT * FROM developer WHERE profession='WebsiteDeveloper'";
+            $query = "SELECT * FROM developer WHERE developer_type='WebsiteDeveloper'";
             $db = Database::getInstance();
             $connection = $db->getConnection();
             $result_set = mysqli_query($connection,$query);

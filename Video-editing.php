@@ -12,7 +12,7 @@ require_once ('class.DevelopersList.php');
             <th>Email</th>
             </tr>
             <?php
-            $query = "SELECT * FROM developer WHERE profession='VedioEditor'";
+            $query = "SELECT * FROM developer WHERE developer_type='VedioEditor'";
             $db = Database::getInstance();
             $connection = $db->getConnection();
             $result_set = mysqli_query($connection,$query);
