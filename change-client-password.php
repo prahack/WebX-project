@@ -97,8 +97,8 @@
         </div>
         
         <div class="input-group">
-            <label for="">New Password</label>
-            <input type="password" name="newpassword1" id="" required>
+            <label for="">New Password (8 characters minimum)</label>
+            <input type="password" name="newpassword1" id="" minlength="8" required>
         </div>
         <div class="input-group">
             <label for="">Confirm New Password</label>
