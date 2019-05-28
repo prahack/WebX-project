@@ -7,10 +7,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Site Title</title>
+    <title>Web-X project</title>
     <link rel="stylesheet" href="header.css">
 </head>
 <body>
