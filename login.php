@@ -62,7 +62,8 @@
             <input type="password" name="password">
         </div>
         <div class="input-group">
-            <button type="submit" name="login" class="btn">Login</button>
+            <button type="submit" style= "background-color: #28a745; background-image: linear-gradient(-180deg,#34d058,#28a745 90%); color: #fff"
+ name="login" class="btn">Login</button>
         </div>
         <p>
         Not yet a member? <a href="register.php">Sign up</a>

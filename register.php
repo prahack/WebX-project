@@ -59,7 +59,7 @@
         
 
         <div class="input-group">
-            <button type="submit" name="register" class="btn">Register</button>
+            <button type="submit" style= "background-color: #28a745; background-image: linear-gradient(-180deg,#34d058,#28a745 90%); color: #fff" name="register" class="btn">Register</button>
         </div>
         <p>
         Already a member? <a href="login.php">Sign in</a>
