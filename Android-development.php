@@ -1,7 +1,7 @@
 <?php include('includes/client-header.php');
 require_once ('class.Database.php');
 require_once ('class.DevelopersListAdapter.php');
-require_once ('class.DeveloperList.php');
+require_once ('class.DevelopersList.php');
 
 ?>
 <?php 
@@ -75,7 +75,7 @@ require_once ('class.DeveloperList.php');
             </tr>
             <?php
 
-                $query = "SELECT * FROM developer WHERE profession='AndroidDeveloper'";
+                $query = "SELECT * FROM developer WHERE developer_type='AndroidDeveloper'";
                 $db = Database::getInstance();
                 $connection = $db->getConnection();
                 $result_set = mysqli_query($connection,$query);
