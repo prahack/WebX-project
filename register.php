@@ -25,7 +25,8 @@
 
         <div class="input-group">
             <label>Phone</label>
-            <input type="tel" placeholder="0xxxxxxxxx" pattern="[0]{1}[0-9]{9}" name="phone" >
+            <input type="tel" placeholder="0xxxxxxxxx" pattern="[0]{1}[0-9]{9}" name="phone" pattern="/[a-z0-9_\-\+]+@[a-z0-9\-]+\.([a-z]{2,3})(?:\.[a-z]{2})?/i"
+    required>
         </div>
 
         <div class="input-group">
