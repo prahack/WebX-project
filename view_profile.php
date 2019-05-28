@@ -28,10 +28,17 @@ $d_email=$_GET['email'];
     $phone = $user['phone'];
     $proffesion = $user['profession'];
     //$LinkedLink = $user['linkedin'];
-    $ranking = $user['ranking'];
+    $ranking =(int) $user['ranking'];
     //$image = '<img src = "data:image/jpeg;base64,'.base64_encode($user['Profile_Photo']).'" height="200" width = "200"/>';
     $_SESSION['developer_name']=$name;
     $_SESSION['developer_email']=$email;
+
+    $sss="";
+        $i = 1;
+        while($i <= $ranking){
+            $i++;
+            $sss.="<span style='font-size:50px;'>&#9733;</span>";
+}
 
 	
 ?>
@@ -75,7 +82,7 @@ $d_email=$_GET['email'];
                                     <h6>
                                        <?php echo  $proffesion ?>
                                     </h6>
-                                    <p class="proile-rating">RANKINGS : <span><?php echo $ranking ?></span></p>
+                                    <p class="proile-rating">RANKINGS : <span><?php echo $sss ?></span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -139,54 +146,7 @@ $d_email=$_GET['email'];
                                             </div>
                                         </div>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Experience</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Hourly Rate</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>10$/hr</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Total Projects</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>230</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>6 months</p>
-                                            </div>
-                                        </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
-                                    </div>
-                                </div>
-                            </div>
+               
                         </div>
                     </div>
                 </div>
