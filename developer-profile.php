@@ -28,7 +28,7 @@ require_once ('class.Database.php');?>
         $username = $user['username'];
         $email = $user['email'];
         $phone = $user['phone'];
-        $proffesion = $user['profession'];
+        $proffesion = $user['developer_type'];
        // $linkedin = $user['linkedIn'];
         $ranking = (int)$user['ranking'];
         $description = $user['description'];
