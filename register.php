@@ -46,8 +46,10 @@
             <select name="field" id="developerDropdown">
                 <option>Select Field</option>
                 <option value="AndroidDeveloper">Android-Developer</option>
-                <option value="graphicDesigner">Graphic-Designer</option>
-                <option value="iOSDeveloper">iOS-Developer</option>
+                <option value="GraphicDesigner">Graphic-Designer</option>
+                <option value="IOSDeveloper">iOS-Developer</option>
+                <option value="WebsiteDeveloper">Website-Developerr</option>
+                <option value="VedioEditor">Vedio-Editor</option>
             </select>
         </div>
         <div class="input-group">
