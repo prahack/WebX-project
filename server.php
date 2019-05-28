@@ -26,7 +26,8 @@
         $type=mysqli_real_escape_string($connection,$_POST['type']);
         $imageName=$_FILES["image"]["name"];
         $filename=file_get_contents($_FILES["image"]["tmp_name"]);
-
+        $field=mysqli_real_escape_string($connection,$_POST['field']);
+        $phone=mysqli_real_escape_string($connection,$_POST['phone']);
         
         $query1="SELECT * FROM client WHERE email='$email'";
         $result1=mysqli_query($connection,$query1);
@@ -54,7 +55,7 @@
             $password=md5($password_1);
             if($type=="developer"){
                 $sql="INSERT INTO developer (username,email,password) VALUES('$username','$email','$password')";
-                mysqli_query($db,$sql);
+                mysqli_query($connection,$sql);
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $email;
                 $_SESSION['type'] = $type;

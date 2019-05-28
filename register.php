@@ -24,6 +24,11 @@
         </div>
 
         <div class="input-group">
+            <label>Phone</label>
+            <input type="tel" pattern="[0]{1}[0-9]{9}" name="phone" >
+        </div>
+
+        <div class="input-group">
             <label>Password</label>
             <input type="password" name="password_1">
         </div>
@@ -42,6 +47,7 @@
                 <option>Select Field</option>
                 <option value="AndroidDeveloper">Android-Developer</option>
                 <option value="graphicDesigner">Graphic-Designer</option>
+                <option value="iOSDeveloper">iOS-Developer</option>
             </select>
         </div>
         <div class="input-group">

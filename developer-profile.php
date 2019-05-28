@@ -30,9 +30,15 @@ require_once ('class.Database.php');?>
         $phone = $user['phone'];
         $proffesion = $user['profession'];
        // $linkedin = $user['linkedIn'];
-        $ranking = $user['ranking'];
+        $ranking = (int)$user['ranking'];
         $description = $user['description'];
 
+        $sss="";
+        $i = 1;
+        while($i <= $ranking){
+            $i++;
+            $sss.="<span style='font-size:50px;'>&#9733;</span>";
+}
     
 
         $image = '<img src = "data:image/jpeg;base64,'.base64_encode($user['profile_photo']).'" height="200" width = "200"/>';
@@ -89,7 +95,7 @@ require_once ('class.Database.php');?>
                                     <h6>
                                        <?php echo  $proffesion ?>
                                     </h6>
-                                    <p class="proile-rating">RANKINGS : <span><?php echo $ranking ?></span></p>
+                                    <p class="proile-rating">RANKINGS : <span><?php echo $sss ?></span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
