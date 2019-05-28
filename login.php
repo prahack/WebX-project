@@ -8,7 +8,7 @@
 </head>
 <body style="background:url(images/bg1.jpg);background-repeat:no-repeat;background-size:100%;">
     <div class="topic">
-    <h1>i-Connect</h1>
+    <h1>Connect-in</h1>
     </div>
     <div class="row">
     <div class="column">
@@ -18,7 +18,7 @@
         </h1>
         <hr>
         <br>
-        <div class="intro">
+        <div class="intro"> 
         <p>Choose a professional and friendly photo.</p>
         <p>Keep your title short and sweet.</p>
         <p>Showcase your experties in the overview section.</p>
@@ -74,7 +74,7 @@
     <br>
     <footer>
         <p>
-            WebX | Moratuwa | 2 729 729
+            Connect-in | Moratuwa | 2 729 729
         </p>
     </footer>
 </body>
