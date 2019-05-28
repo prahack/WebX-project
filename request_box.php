@@ -1,6 +1,20 @@
 <?php include('includes/client-header.php');
   require_once ('class.Database.php');
+  require_once ('class.CancelState.php');
   require_once ('class.Request.php');
+  require_once ('class.FinishState.php');
+  date_default_timezone_set("Asia/Colombo");
+  /*echo date("M");
+  echo "-";
+  echo date("d")+1;
+  echo "-";
+  echo date("Y");
+  echo " at ";
+  echo date("H");
+  echo ":";
+  echo date("i");
+  echo "H";*/
+  //echo date("r");
 ?>
 <?php 
 	//checking if a user is logged in
@@ -52,60 +66,123 @@
         <article>
             <h1>My Request Box</h1>
             <?php
-            $query = "SELECT * FROM requests WHERE clients_email='$email'";
+            $query = "SELECT * FROM objreq";
             $db = Database::getInstance();
             $connection = $db->getConnection();
             $result_set = mysqli_query($connection,$query);
-            $q="SELECT * FROM objreq";
-            $rs=mysqli_query($connection,$q);
-            while ($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
+
+            $list=array();
+            while($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
+                array_push($list,$row);
+            }
+            $result_set=array_reverse($list);
+
+            foreach ($result_set as $row){
+                $req=unserialize($row['req']);
                 //$query0="SELECT * FROM users WHERE email='{$row['email']}' LIMIT 1";
                 //$result_set0 = mysqli_query($connection,$query0);
                 //$req = mysqli_fetch_assoc($result_set0);
-                $d_email=$row['developers_email'];
+                //echo $req->getCTime();
+                if($req->getClientEmail()==$email){
+                $d_email=$req->getDevEmail();
                 echo "<div class='raw'>";
                     echo "<div class='column'>";
                         echo "<div class='card'>";
                             echo "<p>";
                                 echo "Developer's Name : ";
                                 echo "<a href='view_profile.php?email=$d_email'>";
-                                echo $row['developers_name'];
+                                echo $req->getDevName();
                                 echo "</a>";
                             echo "</p>";
                             echo "<p>";
                                 echo "Developer's Email : ";
-                                echo $row['developers_email'];
+                                echo $req->getDevEmail();
                             echo "</p>";
                             echo "<p>";
                                 echo "Description : ";
-                                echo $row['description'];
+                                echo $req->getDescription();
                             echo "</p>";
                             echo "</p>";
                                 echo "Duration : ";
-                                echo $row['duration'];
-                            echo "</p>";
-                            echo "<p>";
-                                echo "Type : ";
-                                echo $row['type'];
+                                echo $req->getDuration();
                             echo "</p>";
                             echo "<p>";
                                 echo "Status : ";
-                                echo $row['status'];
+                                echo $req->returnState()->getState();
                             echo "</p>";
+                            echo "<p>";
+                            echo "Developer Rating         :";
+                            if($req->returnState()->getState()=='finished' and $req->getDevRating()=='not yet' ){
+                                $num=$row['id'];
+                                echo "<form name='row' action='request_box.php' method=post>";
+                                echo "<select name='rate'>";
+                                echo "<option>Rate Developer</option>";
+                                echo "<option value='1'>1</option>";
+                                echo "<option value='2'>2</option>";
+                                echo "<option value='3'>3</option>";
+                                echo "<option value='4'>4</option>";
+                                echo "<option value='5'>5</option>";
+                                echo "</select>";
+                                echo "<input type='submit' id=$num name=$num value='Rate' href='javascript:location.reload()'/>";
+                                echo "</form>";
+                            }else{
+                                echo $req->getDevRating();
+                            }
+                            echo "</p>";
+                            echo "<p>";
+                            echo "Request will auto cancel in ";
+                            echo $req->getCTime();
+                            echo "</p>";
+                            echo time()-($req->getTimeStamp());
+                            if((time()-($req->getTimeStamp()))>600 and $req->returnState()->getState()=='pending'){
+                                $id=$row['id'];
+                                $req->setState(new CancelState());
+                                $req=serialize($req);
+                                $q1="UPDATE objreq
+                                SET req = '{$req}'
+                                WHERE id='{$id}'";
+                                mysqli_query($connection,$q1);
+                            }
                         echo "</div>";
                         echo "<br>";
                     echo "</div>";
                 echo "</div>";
-            }
-            while ($row=mysqli_fetch_array($rs,MYSQLI_ASSOC)){
-                //echo $row['req'];
-                $req=unserialize($row['req']);
-                //echo $req;
-                echo $req->getClientName();
-                echo $req->returnState()->getState();
-            }
+            }}
+            echo "";
             ?>
+            <?php
+            $query = "SELECT * FROM objreq";
+            $db = Database::getInstance();
+            $connection = $db->getConnection();
+            $result_set = mysqli_query($connection,$query);
+
             
+
+            while ($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
+                $req=unserialize($row['req']);
+                if ($req->getClientEmail()==$email){
+                    $x=$row['id'];
+                    $n=$row['id']."co";
+                    if(isset($_POST[$x])){
+                        $rating='';
+                        print($x);
+                        $rating=mysqli_real_escape_string($connection,$_POST['rate']);
+                        echo $rating;
+                        if($rating=='Rate Developer'){
+                            print('xxx');
+                        }else{
+                        $req->setDevRating($rating);
+                        $req=serialize($req);
+                        $q1="UPDATE objreq
+                        SET req = '{$req}'
+                        WHERE id='{$x}'";
+                        mysqli_query($connection,$q1);
+                        header("Refresh:0");
+                        header("Refresh:0");
+                    }
+                }
+            }}
+            ?>
         </article>
     </main>
     <hr>

@@ -2,6 +2,8 @@
   require_once ('class.Database.php');
   require_once ('class.Request.php');
   require_once ('class.PendingState.php');
+  require_once ('class.ConfirmState.php');
+  require_once ('class.FinishState.php');
 
 ?>
 <?php 
@@ -34,68 +36,68 @@
     <div class="main">
         <h1>Requests</h1>
             <?php
-            $query = "SELECT * FROM requests WHERE developers_email='$email'";
+            $query = "SELECT * FROM objreq ";
             $db = Database::getInstance();
             $connection = $db->getConnection();
             $result_set = mysqli_query($connection,$query);
+            $list=array();
+            while($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
+                array_push($list,$row);
+            }
+            $result_set=array_reverse($list);
 
-            
-
-            while ($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
-                //$query0="SELECT * FROM users WHERE email='{$row['email']}' LIMIT 1";
-                //$result_set0 = mysqli_query($connection,$query0);
-                //$req = mysqli_fetch_assoc($result_set0);
-                $c_email=$row['clients_email'];
+            foreach ($result_set as $row){
+                $req=unserialize($row['req']);
+                if ($req->getDevEmail()==$email){
+                    //echo $req->getClientEmail();
+                $c_email=$req->getClientEmail();
                 echo "<div class='raw'>";
                     echo "<div class='column'>";
                         echo "<div class='card'>";
                             echo "<p>";
                             echo "Client's Name  : ";
                             echo "<a href='view_profile.php?email=$c_email'>";
-                            echo $row['clients_name'];
+                            echo $req->getClientName();
                             echo "</a></p>";
                             echo "<p>";
                             echo "Client's Email : ";
-                            echo $row['clients_email'];
+                            echo $req->getClientEmail();
                             echo "</p>";
                             echo "<p>";
                             echo "Discription    : ";
-                            echo $row['description'];
+                            echo $req->getDescription();
                             echo "</p>";
                             echo "<p>";
                             echo "Duration       :";
-                            echo $row['duration'];
-                            echo "</p>";
-                            echo "<p>";
-                            echo "Type           :";
-                            echo $row['type'];
+                            echo $req->getDuration();
                             echo "</p>";
                             echo "<p>";
                             echo "Status         :";
-                            if ($row['status']=='pending'){
+                            if ($req->returnState()->getState()=='pending'){
                                 //echo gettype($row["id"]);
+                                //echo $row['id'];
                                 $num=$row['id']."cn";
                                 $num1=$row['id']."c";
                                 echo "<form name='row' action='view_request.php' method=post>";
-                                echo "<input type='submit' id=$num name=$num value='Confirm' href='javascript:location.reload()'/>";
+                                echo "<input type='submit' id=$num name=$num value='Confirm' href='javascript:location.reload()' href='javascript:location.reload()'/>";
                                 echo "<input type='submit' id=$num1 name=$num1 value='Cancel'/>";
                                 echo "</form>";
                                 //echo "if(isset($_POST[$num])){";
                                     //echo "print($num);";
                                 //echo "}";
                             // echo "<input type='submit' id='btn1' name= value='Cancel'/>";
-                            }else if($row['status']=='confirmed'){ 
+                            }else if($req->returnState()->getState()=='confirmed'){ 
                                 $num=$row['id']."co";
                                 echo "<form name='row' action='view_request.php' method=post>";
                                 echo "<input type='submit' id=$num name=$num value='Finish' href='javascript:location.reload()'/>";
                                 echo "</form>";
                             }else{
-                                echo $row['status'];
+                                echo $req->returnState()->getState();
                             }
                             echo "</p>";
                             echo "<p>";
-                            echo "Rating         :";
-                            if($row['status']=='finished' and $row['rating']=='not yet' ){
+                            echo "Client Rating         :";
+                            if($req->returnState()->getState()=='finished' and $req->getClientRating()=='not yet' ){
                                 $num=$row['id'];
                                 echo "<form name='row' action='view_request.php' method=post>";
                                 echo "<select name='rate'>";
@@ -106,36 +108,37 @@
                                 echo "<option value='4'>4</option>";
                                 echo "<option value='5'>5</option>";
                                 echo "</select>";
-                                echo "<input type='submit' id=$num name=$num value='Rate'/>";
+                                echo "<input type='submit' id=$num name=$num value='Rate' href='javascript:location.reload()'/>";
                                 echo "</form>";
                             }else{
-                                echo $row['rating'];
+                                echo $req->getClientRating();
                             }
                             echo "</p>";
                         echo "</div>";
                         echo "<br>";
                     echo "</div>";
                 echo "</div>";
-            }
-
-            ?>
-            <!--form name="row" action="view_request.php" method=post>
-                <input type="submit" id="btn1" name="btn1" value="changer"/>
-            </form!-->
-            <?php
-                if(isset($_POST["btn1"])){
-                    print("hiiiii");
-                }
-            ?>
-            <?php
-            $query = "SELECT * FROM requests WHERE developers_email='$email'";
+            }}
+        ?>
+        <?php
+            $query = "SELECT * FROM objreq";
             $db = Database::getInstance();
             $connection = $db->getConnection();
             $result_set = mysqli_query($connection,$query);
-
+            //echo gettype($result_set);
             
+            //$aa=mysqli_fetch_array($result_set,MYSQLI_ASSOC);
+            //$a=array(1,2,3,4,5,6);
+            /*$list=array();
+            while($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
+                array_push($list,$row);
+            }
+            $result_set=array_reverse($list);*/
+            //$b=array();
 
             while ($row=mysqli_fetch_array($result_set,MYSQLI_ASSOC)){
+                $req=unserialize($row['req']);
+                if ($req->getDevEmail()==$email){
                 $x=$row['id'];
                 $c="confirmed";
                 $cl="canceled";
@@ -143,17 +146,21 @@
                 $n=$row['id']."cn";
                 if(isset($_POST[$n])){
                     print($n);
-                    $q1="UPDATE requests
-                    SET status = '{$c}'
+                    $req->setState(new ConfirmState());
+                    $req=serialize($req);
+                    $q1="UPDATE objreq
+                    SET req = '{$req}'
                     WHERE id='{$x}'";
                     mysqli_query($connection,$q1);
-
+                    header("Refresh:0");
                 }
                 $n=$row['id']."c";
                 if(isset($_POST[$n])){
                     print($n);
-                    $q1="UPDATE requests
-                    SET status = '{$cl}'
+                    $req->setState(new CancelState());
+                    $req=serialize($req);
+                    $q1="UPDATE objreq
+                    SET req = '{$req}'
                     WHERE id='{$x}'";
                     mysqli_query($connection,$q1);
                     header("Refresh:0");
@@ -161,8 +168,10 @@
                 $n=$row['id']."co";
                 if(isset($_POST[$n])){
                     print($n);
-                    $q1="UPDATE requests
-                    SET status = '{$f}'
+                    $req->setState(new FinishState());
+                    $req=serialize($req);
+                    $q1="UPDATE objreq
+                    SET req = '{$req}'
                     WHERE id='{$x}'";
                     mysqli_query($connection,$q1);
                     header("Refresh:0");
@@ -175,8 +184,10 @@
                     if($rating=='Rate Developer'){
                         print('xxx');
                     }else{
-                        $q1="UPDATE requests
-                    SET rating = '{$rating}'
+                    $req->setClientRating($rating);
+                    $req=serialize($req);
+                    $q1="UPDATE objreq
+                    SET req = '{$req}'
                     WHERE id='{$x}'";
                     mysqli_query($connection,$q1);
                     header("Refresh:0");
@@ -187,9 +198,11 @@
                     mysqli_query($connection,$q1);*/
                 }
             
-            }
+            }}
 
             ?>
+            
+
 
     </div>
     <script>
