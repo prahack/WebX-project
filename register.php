@@ -25,7 +25,7 @@
 
         <div class="input-group">
             <label>Phone</label>
-            <input type="tel" placeholder="0xxxxxxxxx" pattern="[0]{1}[0-9]{9}" name="phone" pattern="/[a-z0-9_\-\+]+@[a-z0-9\-]+\.([a-z]{2,3})(?:\.[a-z]{2})?/i"
+            <input type="tel" placeholder="0XXXXXXXXX" pattern="[0]{1}[0-9]{9}" name="phone" pattern="/[a-z0-9_\-\+]+@[a-z0-9\-]+\.([a-z]{2,3})(?:\.[a-z]{2})?/i" value="<?php echo $phone;?>"
     required>
         </div>
 
@@ -51,6 +51,12 @@
                 <option value="IOSDeveloper">iOS-Developer</option>
                 <option value="WebsiteDeveloper">Website-Developerr</option>
                 <option value="VedioEditor">Vedio-Editor</option>
+            </select>
+
+            <select name="type" id="linkedIndropdown">
+                <option>LinkedIn</option>
+                <option value="linkedin">Developer</option>
+                
             </select>
         </div>
         <!--<div class="input-group">

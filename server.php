@@ -13,6 +13,7 @@
 
     $username="";
     $email="";
+    $phone="";
     $errors1=array();
     $type="";
     $db = Database::getInstance();
@@ -49,6 +50,11 @@
         }
         if($type=="Select Type"){
             array_push($errors1,"select the type of user");
+        }
+        if($type=='developer'){
+            if($field=='Select Field'){
+                array_push($errors1,"select the type of developer");
+            }
         }
         if(count($errors1)==0){
             
