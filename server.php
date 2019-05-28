@@ -24,8 +24,8 @@
         $password_1=mysqli_real_escape_string($connection,$_POST['password_1']);
         $password_2=mysqli_real_escape_string($connection,$_POST['password_2']);
         $type=mysqli_real_escape_string($connection,$_POST['type']);
-        $imageName=$_FILES["image"]["name"];
-        $filename=file_get_contents($_FILES["image"]["tmp_name"]);
+        
+       
         $field=mysqli_real_escape_string($connection,$_POST['field']);
         $phone=mysqli_real_escape_string($connection,$_POST['phone']);
         
