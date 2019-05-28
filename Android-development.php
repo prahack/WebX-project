@@ -1,6 +1,7 @@
 <?php include('includes/client-header.php');
 require_once ('class.Database.php');
 require_once ('class.DevelopersListAdapter.php');
+require_once ('class.DeveloperList.php');
 
 ?>
 <?php 
