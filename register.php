@@ -52,10 +52,10 @@
                 <option value="VedioEditor">Vedio-Editor</option>
             </select>
         </div>
-        <div class="input-group">
+        <!--<div class="input-group">
             <label>Profile Photo</label>
             <input type="file" name="file">
-        </div>
+        </div>-->
         
 
         <div class="input-group">
