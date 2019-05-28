@@ -100,7 +100,6 @@
                 $_SESSION['username']=$user['username'];
                 $_SESSION['email'] =$email;
                 $_SESSION['c'] =$client->getName();
-                $_SESSION['cp'] =$client->username;
                 //echo $client->getName();
                 $_SESSION['success'] = "You are now logged in";
                 $user11 = new User($user['username']);
@@ -173,7 +172,7 @@
             array_push($errors,"type of the project is required");
         }
         if(count($errors)==0){
-            $request=new Request(1,$clientEmail,$clientName,$devEmail,$devEmail,$deuration,$description);
+            $request=new Request(1,$clientEmail,$clientName,$devEmail,$devName,$deuration,$description);
             $req=serialize($request);
             $sql0="INSERT INTO objreq (req) VALUES('$req')";
             $cn=$request->getClientName();
