@@ -1,6 +1,9 @@
-<?php include('includes/client-header.php');?>
+<?php include('includes/client-header.php');
+require_once ('class.Database.php');
+?>
 <?php 
-
+    $db = Database::getInstance();
+    $connection = $db->getConnection();
 	//checking if a user is logged in
 	if (!isset($_SESSION['username'])){
         header('Location: index.php');
@@ -21,13 +24,18 @@
     <title>Document</title>
 </head>
 <body>
+<form method="POST" class="example" action="Android-development.php"style="margin:auto;max-width:300px;float:right">
+    <input type="text" placeholder="Search.." name="search"/>
+    <button type="submit" name="submit" value="Search"/><i class="fa fa-search"></i></button>
+    </form>
     
     <?php
-    $search=mysqli_real_escape_string($connection,$_POST['search']);
+    
     $output = NULL;
     if (isset($_POST['submit'])){
+        $search=mysqli_real_escape_string($connection,$_POST['search']);
         //connect to the database
-        $mysqli = mysqli_connect("localhost","root","","registration");
+        //$mysqli = mysqli_connect("localhost","root","","registration");
         //test if connection failed
         if(mysqli_connect_errno()){
             die("connection failed: ". mysqli_connect_error()."(". mysqli_connect_errno().")");
@@ -45,13 +53,10 @@
             $output = "No results";
         }
         echo $output;
-        $mysqli->close();
+        //$mysqli->close();
     }
     ?>
-    <form method="POST" class="example" action="Android-development.php"style="margin:auto;max-width:300px;float:right">
-    <input type="text" placeholder="Search.." name="search"/>
-    <button type="submit" name="submit" value="Search"/><i class="fa fa-search"></i></button>
-    </form>
+    
 </body>
 </html>
 
@@ -67,7 +72,7 @@
             </tr>
             <?php
             $query = "SELECT * FROM developer WHERE profession='android developer'";
-            $connection=mysqli_connect('localhost','root','','registration');
+            //$connection=mysqli_connect('localhost','root','','registration');
             $result_set = mysqli_query($connection,$query);
 
             
