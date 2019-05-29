@@ -52,13 +52,13 @@
                 <option value="WebsiteDeveloper">Website-Developerr</option>
                 <option value="VedioEditor">Vedio-Editor</option>
             </select>
-
-            <select name="linkedIn" id="linkedIndropdown">
-                <option>LinkedIn</option>
-                <option value="linkedin">Developer</option>
-                
-            </select>
         </div>
+
+        <div class="input-group" id="linkedInDiv">
+            <label>LinkedIn</label>
+            <input type="text" placeholder="LinkedInProfile" name="linkedIn" style="width:450px"  required>
+        </div>
+        
         <!--<div class="input-group">
             <label>Profile Photo</label>
             <input type="file" name="file">
@@ -83,6 +83,7 @@
 
 <script>
  document.getElementById("developerDropdown").style.display="none";
+ document.getElementById("linkedInDiv").style.display="none";
  document.getElementById("dropdown").addEventListener('change',notify);
   
   function notify(event){
@@ -90,10 +91,12 @@
     var selectedType = selected.options[selected.selectedIndex].text;
     if (selectedType=="Developer"){
         document.getElementById("developerDropdown").style.display="initial";
+        document.getElementById("linkedInDiv").style.display="initial";
      
  }
     else{
         document.getElementById("developerDropdown").style.display="none";
+        document.getElementById("linkedInDiv").style.display="none";
     }
   }
 
