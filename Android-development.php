@@ -56,13 +56,18 @@ require_once ('interface.ViewAdapter.php');
             while($row = $resultSet->fetch_assoc()){
                 $d_email=$row['email'];
                 $d_username=$row['username'];
-                $output = "Developer's Name : $d_username <br />Developer's email : $d_email";
+                $output = "Developer's Name : <a href=#>$d_username </a><br />Developer's email : $d_email";
             }
         }else{
             $output = "No results";
         }
         echo"<br>";
         echo"<br>";
+        echo "<b>";
+        echo "Search results for ";
+        echo $search;
+        echo "</b>";
+        echo "<br>";
         echo $output;
         //$mysqli->close();
     }

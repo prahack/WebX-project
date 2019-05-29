@@ -63,6 +63,11 @@ require_once ('interface.ViewAdapter.php');
         }
         echo"<br>";
         echo"<br>";
+        echo "<b>";
+        echo "Search results for ";
+        echo $search;
+        echo "</b>";
+        echo "<br>";
         echo $output;
         //$mysqli->close();
     }
