@@ -34,6 +34,17 @@ $d_email=$_GET['email'];
     $_SESSION['developer_name']=$name;
     $_SESSION['developer_email']=$email;
 
+    $query12 = "SELECT * FROM requests WHERE developers_email= '{$email}' LIMIT 5";    
+    $result_set12 = mysqli_query($connection,$query12);
+    $resultLists123="";
+    while($r=mysqli_fetch_assoc($result_set12)){
+        $resultLists123.="<tr>";
+        $description123=$r['description'];
+        $resultLists123.="{$description123}";
+        $resultLists123.="</tr>";
+        $resultLists123.="<br></br>";
+    }
+
     $sss="";
         $i = 1;
         while($i <= $ranking){
@@ -105,9 +116,9 @@ $d_email=$_GET['email'];
                             
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8" id="profile123">
                         <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" >
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Id</label>
@@ -152,6 +163,9 @@ $d_email=$_GET['email'];
                
                         </div>
                     </div>
+                    <div class="col-md-6" id="timeline123">
+                        <?php echo $resultLists123 ?>
+                    </div>
                 </div>
             </form>           
         </div>
@@ -162,9 +176,18 @@ $d_email=$_GET['email'];
 <script>
  
  document.getElementById("timeline").addEventListener('click',notify);
-  
+ document.getElementById("about").addEventListener('click',notify1);
+ document.getElementById("timeline123").style.display="none";
   function notify(event){
-    alert("798687576");
+    document.getElementById("profile123").style.display="none";
+    document.getElementById("timeline123").style.display="initial";
+    //alert("798687576");
+  }
+
+  function notify1(event){
+    document.getElementById("profile123").style.display="initial";
+    document.getElementById("timeline123").style.display="none";
+    //alert("798687576");
   }
 
 </script>
