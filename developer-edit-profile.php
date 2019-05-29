@@ -43,17 +43,18 @@
         
         $username=mysqli_real_escape_string($connection,$_POST['username']);
         $email=mysqli_real_escape_string($connection,$_POST['email']);
-        $password_1=mysqli_real_escape_string($connection,$_POST['password_1']);
-        $password_2=mysqli_real_escape_string($connection,$_POST['password_2']);
+        //$password_1=mysqli_real_escape_string($connection,$_POST['password_1']);
+        //$password_2=mysqli_real_escape_string($connection,$_POST['password_2']);
         $phone=mysqli_real_escape_string($connection,$_POST['Phone']);
+        $description=mysqli_real_escape_string($connection,$_POST['description']);
 
-        if($password_1==null){
-            $password_1=$password;
-        }
+        //if($password_1==null){
+           // $password_1=$password;
+        
         //$type=mysqli_real_escape_string($db,$_POST['type']);
         
         $query1="UPDATE developer
-        SET username = '{$username}', email = '{$email}', password='{$password_1}', phone='{$phone}'
+        SET username = '{$username}', email = '{$email}', phone='{$phone}', description='{$description}'
         WHERE email='{$email}'";
 
         
@@ -62,9 +63,9 @@
         if (!$result1){
             echo "update fail";
         }
-        header('location: developer-profile.php');
-        }
+       header('location: developer-profile.php');
         
+    }
     
     
 
@@ -115,6 +116,11 @@
         <div class="input-group">
             <label>Phone</label>
             <input type="tel" pattern="[0]{1}[0-9]{9}" name="Phone" value=<?php echo $phone;?>>
+        </div>
+
+        <div class="input-group">
+            <label>Description</label>
+            <input type="text" name="description"  ?>
         </div>
         
         <div class="input-group">
