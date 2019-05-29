@@ -22,12 +22,16 @@ require_once ('class.DevelopersList.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="developer.css">
+    <link rel="stylesheet" href="request_box.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
 <body>
-<form method="POST" class="example" action="Android-development.php"style="margin:auto;max-width:300px;float:right">
+    <header><h1>Android Development</h1>
+</header>
+    <main>
+    <div class="fixed">        
+<form method="POST" class="example" action="Android-development.php"style="margin:auto;max-width:300px;float:right;y-index:0">
     <input type="text" placeholder="Search.." name="search"/>
     <button type="submit" name="submit" value="Search"/><i class="fa fa-search"></i></button>
     </form>
@@ -59,7 +63,9 @@ require_once ('class.DevelopersList.php');
         //$mysqli->close();
     }
     ?>
-    <main>
+    </div>
+    <div class="column">
+        <article> 
         <?php
                 $query = "SELECT * FROM developer WHERE developer_type='AndroidDeveloper'";
                 $db = Database::getInstance();
@@ -68,10 +74,20 @@ require_once ('class.DevelopersList.php');
                 $developerList=new DevelopersListAdapter(new DevelopersList());
                 $developerList->viewDevelopersList($result_set);
             ?>
+  </div>  
+</article>
+
+
+<footer>
+<p>
+        WebX | Moratuwa | 2 729 729
+    </p>
+  
+</footer>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
     </main>
 </body>
+
 </html>
-
-
-    
-<?php include('includes/footer.php');?>

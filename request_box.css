@@ -1,9 +1,19 @@
-* {
+ 
+  main{
+    padding: 0.5%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 0.5rem;
+    background: #fff;
+    height: 100%;
+    overflow-y:auto;
     box-sizing: border-box;
-  }
-  
+}
   body {
     font-family: Arial, Helvetica, sans-serif;
+    
   }
   
   /* Float four columns side by side */
@@ -33,7 +43,12 @@
       margin-bottom: 20px;
     }
   }
-  
+  .column {
+  float: left;
+  padding: 10px;
+  width:75%;
+  float:left;
+}
   /* Style the counter cards */
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -41,17 +56,7 @@
     text-align: left;
     background-color: #ebebe0;
   }
-  .main{
-      padding: 0.5%;
-      margin-top: 3%;
-      margin-bottom: 3%;
-      margin-left: 5%;
-      margin-right: 5%;
-      border-radius: 0.5rem;
-      background: #fff;
-      height: 100%;
-      overflow-y:auto;
-  }
+  
   #myBtn {
     display: none;
     position: fixed;
@@ -76,4 +81,25 @@
     font-size: 50px;
     padding: 5px;
     border-radius: 10px;
+  }
+ .fixed {
+  float:right;
+  padding: 10px;
+   position: absolute;
+  bottom: 415px;
+  right: 0;
+  width: 25%;
+  }
+  footer {
+    text-align: center ;
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    position: fixed; left: 0; right:0;bottom: 0;
+  width:100%;
+  height: 150px;
+  }
+  footer a {
+    border-bottom: 1px solid #666;
+    color: #eee;
+    font: 24px/180px serif;
+    text-decoration: none;
   }

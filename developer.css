@@ -9,7 +9,7 @@ body {
 /* Float four columns side by side */
 .column {
   float: left;
-  width: 33.3%;
+  width: 50%;
   padding: 0 10px;
 }
 
@@ -31,6 +31,7 @@ body {
     margin-bottom: 20px;
   }
 }
+
 
 /* Style the counter cards */
 .card {
@@ -68,4 +69,14 @@ form.example::after {
   content: "";
   clear: both;
   display: table;
+}
+footer {
+  text-align: center;
+  background: #000099;
+}
+footer a {
+  border-bottom: 1px solid #666;
+  color: #eee;
+  font: 24px/180px serif;
+  text-decoration: none;
 }

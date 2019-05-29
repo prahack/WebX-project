@@ -3,6 +3,7 @@
   require_once ('class.CancelState.php');
   require_once ('class.Request.php');
   require_once ('class.FinishState.php');
+  require_once ('class.ConfirmState.php');
   date_default_timezone_set("Asia/Colombo");
   /*echo date("M");
   echo "-";
@@ -38,6 +39,7 @@
     <title>Document</title>
 </head>
 <body>
+    <main>
     <button onclick="topFunction()" id="myBtn" title="Go to top"> <i class="fas fa-arrow-up"></i></button> 
     <script>
         // When the user scrolls down 20px from the top of the document, show the button
@@ -57,12 +59,11 @@
         document.documentElement.scrollTop = 0;
         }
     </script>
-</body>
-</html>
+
 
 
 <div>
-    <main>
+    
         <article>
             <h1>My Request Box</h1>
             <?php
@@ -183,8 +184,18 @@
                 }
             }}
             ?>
+            </div>
         </article>
-    </main>
-    <hr>
-</div>
-<?php include('includes/footer.php');?>
+        </main>
+<footer>
+<p>
+        WebX | Moratuwa | 2 729 729
+    </p>
+  <a href="about-us.php">About us</a>
+</footer>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
