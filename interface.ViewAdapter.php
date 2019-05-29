@@ -1,5 +1,5 @@
 <?php
 interface ViewAdapter{
-    public function view();
+    public function view($result_set);
 }
 ?>

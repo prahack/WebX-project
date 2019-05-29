@@ -1,5 +1,5 @@
 <?php
-//require_once ('class.DevelopersList.php');
+require_once ('interface.ViewAdapter.php');
 class DevelopersListAdapter implements ViewAdapter{
     private $developers;
 
@@ -7,7 +7,7 @@ class DevelopersListAdapter implements ViewAdapter{
         $this->developers=$developers;
     }
 
-    public function viewDevelopersList($result_set){
+    public function view($result_set){
         $this->developers->displayDevelopersList($result_set);
     }
 }
