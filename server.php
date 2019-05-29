@@ -75,7 +75,7 @@
                header('location: developer-profile.php');
             }
             else{
-                $sql="INSERT INTO client (username,email,password) VALUES('$username','$email','$password')";
+                $sql="INSERT INTO client (username,email,password,phone) VALUES('$username','$email','$password','$phone')";
                 mysqli_query($connection,$sql);
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $email;
