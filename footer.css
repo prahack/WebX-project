@@ -1,7 +1,22 @@
 *
 /* Style the footer */
 .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #f1f1f1;
     padding: 10px;
     text-align: center;
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
   }
+  .footer_contents {
+
+    height:24px; 
+    width: 1000px;
+    margin:auto;
+
+}
