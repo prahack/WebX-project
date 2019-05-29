@@ -56,7 +56,7 @@
                         echo "<div class='card'>";
                             echo "<p>";
                             echo "Client's Name  : ";
-                            echo "<a href='view_profile.php?email=$c_email'>";
+                            echo "<a href='view_client_profile.php?email=$c_email'>";
                             echo $req->getClientName();
                             echo "</a></p>";
                             echo "<p>";

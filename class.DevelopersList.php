@@ -24,7 +24,7 @@ class DevelopersList{
                     echo "<div class='card'>";
                         echo "<p>";
                         echo "Name : ";
-                        echo "<a href='view_profile.php?email=$d_email'>";
+                        echo "<a href='view_developer_profile.php?email=$d_email'>";
                         echo $row['username'];
                         echo "</a>";
                         echo "</p>";
