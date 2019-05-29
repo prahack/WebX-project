@@ -12,7 +12,7 @@ class Request{
     private $timeStamp;
     private $clientRating;
     private $devRating;
-    private $cancelTime;
+    private $requestedTime;
 
     public function __construct($id,$clientEmail,$clientName,$devEmail,$devName,$duration,$description){
         $this->id=$id;
@@ -28,11 +28,11 @@ class Request{
         $this->devRating="not yet";
         //$this->cancelTime=date("t");
         $m=date("M");
-        $d=date("d")+1;
+        $d=date("d");
         $y=date("Y");
         $h=date("H");
         $i=date("i");
-        $this->cancelTime=$m."-".$d."-".$y." at ".$h.":".$i."H";
+        $this->requestedTime=$m."-".$d."-".$y." at ".$h.":".$i."H";
 
     }
 
@@ -85,8 +85,8 @@ class Request{
         $this->devRating=$drating;
     }
 
-    public function getCTime(){
-        return $this->cancelTime;
+    public function getRTime(){
+        return $this->requestedTime;
     }
 }
 

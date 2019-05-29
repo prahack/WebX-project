@@ -124,18 +124,18 @@
                                 echo "<option value='4'>4</option>";
                                 echo "<option value='5'>5</option>";
                                 echo "</select>";
-                                echo "<input type='submit' id=$num name=$num value='Rate' href='javascript:location.reload()'/>";
+                                echo "<input type='submit' id=$num name=$num value='Rate' href='location.reload()'/>";
                                 echo "</form>";
                             }else{
                                 echo $req->getDevRating();
                             }
                             echo "</p>";
                             echo "<p>";
-                            echo "Request will auto cancel in ";
-                            echo $req->getCTime();
+                            echo "Request in ";
+                            echo $req->getRTime();
                             echo "</p>";
-                            echo time()-($req->getTimeStamp());
-                            if((time()-($req->getTimeStamp()))>600 and $req->returnState()->getState()=='pending'){
+                            //echo time()-($req->getTimeStamp());
+                            if((time()-($req->getTimeStamp()))>86400 and $req->returnState()->getState()=='pending'){
                                 $id=$row['id'];
                                 $req->setState(new CancelState());
                                 $req=serialize($req);
@@ -178,11 +178,12 @@
                         SET req = '{$req}'
                         WHERE id='{$x}'";
                         mysqli_query($connection,$q1);
-                        header("Refresh:0");
-                        header("Refresh:0");
                     }
                 }
             }}
+            //echo "<script>";
+            //echo "location.reload();";
+            //echo "</script>";
             ?>
             </div>
         </article>
