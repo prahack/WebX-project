@@ -53,7 +53,7 @@
                 <option value="VedioEditor">Vedio-Editor</option>
             </select>
 
-            <select name="type" id="linkedIndropdown">
+            <select name="linkedIn" id="linkedIndropdown">
                 <option>LinkedIn</option>
                 <option value="linkedin">Developer</option>
                 
