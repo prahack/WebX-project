@@ -1,6 +1,6 @@
 *
 /* Style the footer */
-.footer {
+/*.footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -19,4 +19,14 @@
     width: 1000px;
     margin:auto;
 
+}*/
+footer {
+  text-align: center;
+  background: #000099;
+}
+footer a {
+  border-bottom: 1px solid #666;
+  color: #eee;
+  font: 24px/180px serif;
+  text-decoration: none;
 }

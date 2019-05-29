@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="developer.css">
 <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
 <title>Web-X project</title>
 <meta charset="utf-8">
@@ -42,9 +43,9 @@
 </style>
 </head>
 <body class=body>
-
 <?php include('includes/client-header.php');?>
-
+<main>
+    <article>
 <div class="row">
   <div class="column side">
     <h2>Side</h2>
@@ -63,7 +64,18 @@
   </div>
 </div>
 
-<?php include('includes/footer.php');?>
-  
+</article>
+</main> 
+<footer>
+<p>
+        WebX | Moratuwa | 2 729 729
+    </p>
+    
+</footer>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+    
 </body>
+
 </html>
