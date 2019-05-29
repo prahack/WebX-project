@@ -16,6 +16,8 @@
     $phone="";
     $errors1=array();
     $type="";
+    $linkedIn="";
+
     $db = Database::getInstance();
     $connection = $db->getConnection();
 
@@ -29,6 +31,7 @@
        
         $field=mysqli_real_escape_string($connection,$_POST['field']);
         $phone=mysqli_real_escape_string($connection,$_POST['phone']);
+        $linkedIn=mysqli_real_escape_string($connection,$_POST['linkedIn']);
         
         $query1="SELECT * FROM client WHERE email='$email'";
         $result1=mysqli_query($connection,$query1);
@@ -61,11 +64,12 @@
             $password=md5($password_1);
            echo $type;
             if($type=="developer"){
-                $sql="INSERT INTO developer (username,email,password,developer_type,phone) VALUES('$username','$email','$password','$field','$phone')";
+                $sql="INSERT INTO developer (username,email,password,developer_type,phone,linkedIn) VALUES('$username','$email','$password','$field','$phone','$linkedIn')";
                 mysqli_query($connection,$sql);
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $email;
                 $_SESSION['type'] = $type;
+                $_SESSION['linkedIn'] = $LinkedIn;
                 $_SESSION['success'] = "You are now logged in";
                 
                header('location: developer-profile.php');
