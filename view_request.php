@@ -72,6 +72,20 @@
                             echo $req->getDuration();
                             echo "</p>";
                             echo "<p>";
+                            echo "Request in ";
+                            echo $req->getRTime();
+                            echo "</p>";
+                            //echo time()-($req->getTimeStamp());
+                            if((time()-($req->getTimeStamp()))>86400 and $req->returnState()->getState()=='pending'){
+                                $id=$row['id'];
+                                $req->setState(new CancelState());
+                                $req=serialize($req);
+                                $q1="UPDATE objreq
+                                SET req = '{$req}'
+                                WHERE id='{$id}'";
+                                mysqli_query($connection,$q1);
+                            }
+                            echo "<p>";
                             echo "Status         :";
                             if ($req->returnState()->getState()=='pending'){
                                 //echo gettype($row["id"]);

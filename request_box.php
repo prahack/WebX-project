@@ -166,9 +166,9 @@
                     $n=$row['id']."co";
                     if(isset($_POST[$x])){
                         $rating='';
-                        print($x);
+                        //print($x);
                         $rating=mysqli_real_escape_string($connection,$_POST['rate']);
-                        echo $rating;
+                        //echo $rating;
                         if($rating=='Rate Developer'){
                             print('xxx');
                         }else{
