@@ -33,8 +33,7 @@
 <header>
 <button class="button" style="vertical-align:middle; float:right;"><span><a href="developer-profile.php?" style= "float:right;">Back</a>
 </span></button></header>
-<main>
-        <article>
+    <div class="main">
         <h1>Requests</h1>
             <?php
             $query = "SELECT * FROM objreq ";
@@ -224,15 +223,5 @@
         document.documentElement.scrollTop = 0;
         }
     </script>
-
-</article>
-</main>
-<footer>
-  <a href="about-us.php">About us</a>
-</footer>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-    <script src="js/index.js"></script>
-
 </body>
 </html>

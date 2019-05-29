@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Site Title</title>
-    <link rel="stylesheet" href="footer.css">
-</head>
 
-<div class="footer">
-  <p>WebX | Moratuwa | Tel:555 555 5555</p>
-</div>
-</html>
+
+  
+<link rel="stylesheet" href="footer.css">
+<footer>
+  <a href="about-us.php">About us</a>
+</footer>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
