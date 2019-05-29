@@ -1,50 +1,45 @@
-<?php  session_start();
-    require_once ('class.hashlist.php');
-
-require_once ('class.Database.php');?>
+<?php  session_start(); 
+  require_once ('class.Database.php');
+?>
 <!--php require_once('project/inc/connection.php'); ?--->
 <!--?php require_once('project/inc/functions.php'); ?-->
+<?php
+$d_email=$_GET['email'];
+?>
 <?php 
 	//checking if a user is logged in
 	if (!isset($_SESSION['username'])){
 		header('Location: index.php');
-	}
-
+    }
 	$user_list = '';
     //getting the list of users
-    $email=$_SESSION['email'];
-    //$userr=hashlist::getUser($email);
-
+    $email=$d_email;
     $query = "SELECT * FROM developer WHERE email= '{$email}' LIMIT 1";
-   
-    //$connection=mysqli_connect('localhost','root','','registration');
     $db = Database::getInstance();
     $connection = $db->getConnection();
     $result_set = mysqli_query($connection,$query);
-   
+    //$query1= "SELECT * FROM users WHERE email= '{$email}' LIMIT 1";
+    //$result_set1 = mysqli_query($connection,$query1);
+    //verify_query($result_set);
+    $user= mysqli_fetch_assoc($result_set);
+    $name = $user['username'];
+    $email = $user['email'];
+    $description = $user['description'];
+    //$user = mysqli_fetch_assoc($result_set);
+    $phone = $user['phone'];
+    $proffesion = $user['developer_type'];
+    //$LinkedLink = $user['linkedin'];
+    $ranking =(int) $user['ranking'];
+    //$image = '<img src = "data:image/jpeg;base64,'.base64_encode($user['Profile_Photo']).'" height="200" width = "200"/>';
+    $_SESSION['developer_name']=$name;
+    $_SESSION['developer_email']=$email;
 
-    if(mysqli_num_rows($result_set)==1){
-        $user = mysqli_fetch_assoc($result_set);
-        $username = $user['username'];
-        $email = $user['email'];
-        $phone = $user['phone'];
-        $proffesion = $user['developer_type'];
-        $linkedIn = $user['linkedIn'];
-        $ranking = (int)$user['ranking'];
-        $description = $user['description'];
-
-        $sss="";
+    $sss="";
         $i = 1;
         while($i <= $ranking){
             $i++;
             $sss.="<span style='font-size:50px;'>&#9733;</span>";
 }
-    
-
-        $image = '<img src = "data:image/jpeg;base64,'.base64_encode($user['profile_photo']).'" height="200" width = "200"/>';
-    }
-    //verify_query($result_set);
-    
 
 	
 ?>
@@ -52,7 +47,7 @@ require_once ('class.Database.php');?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Users</title>
+	<title>View Profile</title>
 
     <link rel="stylesheet" href="profile.css">
 </head>
@@ -72,38 +67,35 @@ require_once ('class.Database.php');?>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                        <img src='profilePic.jpg' alt=""/> 
-                        
-                       
+                        <img src="profilePic.jpg" alt=""/>
                             <!--?php echo $image?>-->
                             
                         </div>
                     </div>
                     <div class="col-md-6">
-                    <div class="divide">
-                       <!--input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"  /-->
-                       <button class="button1" >  <a href="developer-edit-profile.php">edit profile</a></button>
-                       <button class="button2" >  <a href="view_request.php">View Requests</a></button>
-                    </div>
                         <div class="profile-head">
                                     <h5>
-                                        <?php echo $username;?>
+                                        <?php echo $name;?>
                                     </h5>
                                     <h6>
                                        <?php echo  $proffesion ?>
                                     </h6>
                                     <p class="proile-rating">RANKINGS : <span><?php echo $sss ?></span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
+                                <li class="nav-item" id="about">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item" id="timeline">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    
+
+                    <div class="col-md-2">
+                        <!--input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/-->
+                        <button><a href='request.php?email=<?php echo $email ?>&username1=<?php echo $name?>'>Send Request</a></button>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -113,22 +105,12 @@ require_once ('class.Database.php');?>
                             
                         </div>
                     </div>
-                    
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>username</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?php echo  $username ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>email</label>
+                                                <label>Id</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p><?php echo $email ?></p>
@@ -136,7 +118,23 @@ require_once ('class.Database.php');?>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>phone</label>
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><?php echo  $name ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><?php echo $email ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p><?php echo $phone ?></p>
@@ -144,29 +142,29 @@ require_once ('class.Database.php');?>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>profession</label>
+                                                <label>Profession</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p><?php echo $proffesion ?></p>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>LinkedIn</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?php echo $linkedIn ?></p>
-                                            </div>
-                                        </div>
                             </div>
-                            
-                            </div>
+               
                         </div>
                     </div>
                 </div>
-            </form>  
-                     
+            </form>           
         </div>
-        
 </body>
 </html>
+
+
+<script>
+ 
+ document.getElementById("timeline").addEventListener('click',notify);
+  
+  function notify(event){
+    alert("798687576");
+  }
+
+</script>
