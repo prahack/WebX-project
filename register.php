@@ -56,8 +56,13 @@
 
         <div class="input-group" id="linkedInDiv">
             <label>LinkedIn</label>
-            <input type="text" placeholder="LinkedInProfile" name="linkedIn" style="width:450px"  required>
+            <input type="text" placeholder="LinkedInProfile" name="linkedIn" style="width:450px"  id="linkedInDiv">
+
         </div>
+
+        
+            
+       
         
         <!--<div class="input-group">
             <label>Profile Photo</label>
@@ -66,7 +71,7 @@
         
 
         <div class="input-group">
-            <button type="submit" style= "background-color: #28a745; background-image: linear-gradient(-180deg,#34d058,#28a745 90%); color: #fff" name="register" class="btn">Register</button>
+            <button type="submit" style= "background-color: #28a745; background-image: linear-gradient(-180deg,#34d058,#28a745 90%); color: #fff" name="register" class="btn" >Register </button>
         </div>
         <p>
         Already a member? <a href="login.php">Sign in</a>
@@ -85,7 +90,8 @@
  document.getElementById("developerDropdown").style.display="none";
  document.getElementById("linkedInDiv").style.display="none";
  document.getElementById("dropdown").addEventListener('change',notify);
-  
+
+
   function notify(event){
     var selected = document.getElementById("dropdown");
     var selectedType = selected.options[selected.selectedIndex].text;
