@@ -88,7 +88,7 @@
     <form method="post" action="change-client-password.php?email=<?php echo $c_email ?>">
     <div class="input-group">
             <label>Email</label>
-            <input type="text" name="email" value="<?php echo $c_email?>">
+            <input type="text" name="email" value="<?php echo $c_email?>"readonly>
             
         </div>
         <div class="input-group">
