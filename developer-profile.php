@@ -29,7 +29,7 @@ require_once ('class.Database.php');?>
         $email = $user['email'];
         $phone = $user['phone'];
         $proffesion = $user['developer_type'];
-       // $linkedin = $user['linkedIn'];
+        $linkedIn = $user['linkedIn'];
         $ranking = (int)$user['ranking'];
         $description = $user['description'];
 
@@ -151,6 +151,14 @@ require_once ('class.Database.php');?>
                                             </div>
                                             <div class="col-md-6">
                                                 <p><?php echo $proffesion ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>LinkedIn</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><?php echo $linkedIn ?></p>
                                             </div>
                                         </div>
                             </div>
