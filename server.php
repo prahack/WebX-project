@@ -59,6 +59,7 @@
         if(count($errors1)==0){
             
             $password=md5($password_1);
+           echo $type;
             if($type=="developer"){
                 $sql="INSERT INTO developer (username,email,password,developer_type,phone) VALUES('$username','$email','$password','$field','$phone')";
                 mysqli_query($connection,$sql);
