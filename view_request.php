@@ -4,7 +4,7 @@
   require_once ('class.PendingState.php');
   require_once ('class.ConfirmState.php');
   require_once ('class.FinishState.php');
-
+  require_once ('class.CancelState.php');
 ?>
 <?php 
 	//checking if a user is logged in
