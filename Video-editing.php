@@ -1,6 +1,6 @@
 <?php include('includes/client-header.php');
   require_once ('class.Database.php');
-  require_once ('class.DevelopersListAdapter.php');
+  require_once ('class.DevelopersListViewAdapter.php');
 require_once ('class.DevelopersList.php');
 ?>
     <main>
@@ -17,7 +17,7 @@ require_once ('class.DevelopersList.php');
             $connection = $db->getConnection();
             $result_set = mysqli_query($connection,$query);
             $developerList=new DevelopersListAdapter(new DevelopersList());
-            $developerList->viewDevelopersList($result_set);
+            $developerList->view($result_set);
 
             ?>
             </table>
