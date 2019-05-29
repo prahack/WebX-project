@@ -84,10 +84,10 @@ $d_email=$_GET['email'];
                                     </h6>
                                     <p class="proile-rating">RANKINGS : <span><?php echo $sss ?></span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
+                                <li class="nav-item" id="about">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item" id="timeline">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
                                 </li>
                             </ul>
@@ -154,3 +154,14 @@ $d_email=$_GET['email'];
         </div>
 </body>
 </html>
+
+
+<script>
+ 
+ document.getElementById("timeline").addEventListener('click',notify);
+  
+  function notify(event){
+    alert("798687576");
+  }
+
+</script>
