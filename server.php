@@ -178,7 +178,10 @@
             array_push($errors,"description is required");
         }
         if(empty($deuration)){
-            array_push($errors,"duration is required");
+            array_push($errors,"duration is required");   
+        }
+        if($deuration=="Select Duration"){
+            array_push($errors,"select a duration");
         }
         if($reqType=="Select Type of the project"){
             array_push($errors,"type of the project is required");

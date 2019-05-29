@@ -9,7 +9,10 @@
     $username=$_SESSION['username'];
     $dev_name=$_SESSION['developer_name'];
     $dev_email=$_SESSION['developer_email'];
+    $project_type=$_SESSION['project_type'];
+    //echo $_SESSION['project_type'];
 ?>
+
 <?php
 $previous = "javascript:history.go(-1)";
 if(isset($_SERVER['HTTP_REFERER'])) {
@@ -54,17 +57,31 @@ if(isset($_SERVER['HTTP_REFERER'])) {
             <label>Description about the project</label>
             <input type="text" name="description">
         </div>
+        
         <div class="input-group">
-            <label>Time duration</label>
-            <input type="text" name="period">
+            <label>Project Type</label>
+            <input type="text" name="type" value="<?php echo $project_type ?>" readonly>
         </div>
         <div class="input-group1">
-            <select name="type" class="select">
-                <option>Select Type of the project</option>
-                <option value="androidapp">Android Application</option>
-                <option value="iosapp">iOS Application</option>
+            <select name="period" class="select">
+                <option>Select Duration</option>
+                <option value="3 days">3 days</option>
+                <option value="5 days">5 days</option>
+                <option value="1 week">1 week</option>
+                <option value="1.5 weeks">1.5 weeks</option>
+                <option value="2 weeks">2 weeks</option>
+                <option value="2.5 week">2.5 weeks</option>
+                <option value="3 weeks">3 weeks</option>
+                <option value="3.5 weeks">3.5 weeks</option>
+                <option value="1 month">1 month</option>
+                <option value="1.5 months">1.5 months</option>
+                <option value="2 months">2 months</option>
+                <option value="3 moths">3 months</option>
+                <option value="3 moths +">more than 3 moths</option>
+                
             </select>
         </div>
+        
         <div class="input-group-btn">
             <button type="submit" name="request" class="btn1">Submit Request</button>
             <button type="submit" name="cancel request" class="btn2"><a href="<?= $previous ?>">Cancel Request</a></button>

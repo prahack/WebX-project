@@ -32,6 +32,21 @@ $d_email=$_GET['email'];
     //$image = '<img src = "data:image/jpeg;base64,'.base64_encode($user['Profile_Photo']).'" height="200" width = "200"/>';
     $_SESSION['developer_name']=$name;
     $_SESSION['developer_email']=$email;
+    $type=$user['developer_type'];
+    $_SESSION['developer_name']=$name;
+    $_SESSION['developer_email']=$email;
+    if ($type=="AndroidDeveloper"){
+        $_SESSION['project_type']="Android Application";
+        ///echo $_SESSION['project_type'];
+    }else if($type=="IOSDeveloper"){
+        $_SESSION['project_type']="iOS Application";
+    }else if($type=="WebsiteDeveloper"){
+        $_SESSION['project_type']="Web Application/Web Site";
+    }else if($type=="GraphicDesigner"){
+        $_SESSION['project_type']="Graphic Design";
+    }else if($type=="VideoEditor"){
+        $_SESSION['project_type']="Video/Sort Film";
+    }
 
     $sss="";
         $i = 1;

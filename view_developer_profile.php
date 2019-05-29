@@ -33,6 +33,18 @@ $d_email=$_GET['email'];
     //$image = '<img src = "data:image/jpeg;base64,'.base64_encode($user['Profile_Photo']).'" height="200" width = "200"/>';
     $_SESSION['developer_name']=$name;
     $_SESSION['developer_email']=$email;
+    $type=$user['developer_type'];
+    if ($type=="AndroidDeveloper"){
+        $_SESSION['project_type']="Android Application";
+    }else if($type=="IOSDeveloper"){
+        $_SESSION['project_type']="iOS Application";
+    }else if($type=="WebsiteDeveloper"){
+        $_SESSION['project_type']="Web Application/Web Site";
+    }else if($type=="GraphicDesigner"){
+        $_SESSION['project_type']="Graphic Design";
+    }else if($type=="VideoEditor"){
+        $_SESSION['project_type']="Video/Sort Film";
+    }
 
     $query12 = "SELECT * FROM requests WHERE developers_email= '{$email}' LIMIT 5";    
     $result_set12 = mysqli_query($connection,$query12);
