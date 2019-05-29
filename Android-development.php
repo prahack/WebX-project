@@ -30,6 +30,7 @@ require_once ('class.DevelopersList.php');
     <header><h1>Android Development</h1>
 </header>
     <main>
+    <article>
     <div class="fixed">        
 <form method="POST" class="example" action="Android-development.php"style="margin:auto;max-width:300px;float:right;y-index:0">
     <input type="text" placeholder="Search.." name="search"/>
@@ -65,7 +66,7 @@ require_once ('class.DevelopersList.php');
     ?>
     </div>
     <div class="column">
-        <article> 
+         
         <?php
                 $query = "SELECT * FROM developer WHERE developer_type='AndroidDeveloper'";
                 $db = Database::getInstance();
@@ -74,20 +75,21 @@ require_once ('class.DevelopersList.php');
                 $developerList=new DevelopersListAdapter(new DevelopersList());
                 $developerList->viewDevelopersList($result_set);
             ?>
-  </div>  
+   
+
+</div> 
 </article>
-
-
+</main> 
 <footer>
 <p>
         WebX | Moratuwa | 2 729 729
     </p>
-  
+    
 </footer>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <script src="js/index.js"></script>
-    </main>
+    
 </body>
 
 </html>
