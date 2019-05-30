@@ -58,10 +58,17 @@ require_once ('class.hashlist.php');
         //$resultLists123.="<br></br>";
     }
     if ($i !=0){
-        $rate=round($rate/$i,1);
+        $rate=round($rate/$i,0);
     } 
+    $sss="";
+        $i = 1;
+        $rate=(int)$rate;
+        while($i <= $rate){
+            $i++;
+            $sss.="<span style='font-size:40px;'>&#9733;</span>";
+}
   
-
+$sss.=" ";
 	
 ?>
 <!DOCTYPE html>
@@ -104,14 +111,14 @@ require_once ('class.hashlist.php');
                                         <?php echo $username;?>
                                     </h5>
                                     
-                                    <p class="proile-rating">Rating : <span><?php echo $rate ?></span></p>
+                                    <p class="proile-rating"><b>Rating : </b><span><?php echo $sss;
+                                    echo $rate;
+                                    ?></span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                                </li>
+                                
                             </ul>
                         </div>
                     </div>

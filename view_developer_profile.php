@@ -85,13 +85,15 @@ if(isset($_SERVER['HTTP_REFERER'])) {
     }
     //echo $rate;
     $sss="";
-        $i = 1;
-        while($i <= $ranking){
-            $i++;
-            $sss.="<span style='font-size:50px;'>&#9733;</span>";
+    $i = 1;
+    $rate=(int)$rate;
+    while($i <= $rate){
+        $i++;
+        $sss.="<span style='font-size:40px;'>&#9733;</span>";
 }
 
-	
+$sss.=" ";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,7 +134,9 @@ if(isset($_SERVER['HTTP_REFERER'])) {
                                     <h6>
                                        <?php echo  $proffesion ?>
                                     </h6>
-                                    <p class="proile-rating">Rating: <span><?php echo $rate ?></span></p>
+                                    <p class="proile-rating" style="font-size:20px"><b>Rating :</b><span><?php echo $sss; 
+                                     echo $rate;
+                                    ?></span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" id="about">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
