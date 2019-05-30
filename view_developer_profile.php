@@ -55,7 +55,7 @@ if(isset($_SERVER['HTTP_REFERER'])) {
 
     $query12 = "SELECT * FROM objreq";    
     $result_set12 = mysqli_query($connection,$query12);
-    $resultLists123="";
+    $result123=array();
     $rate=0;
     $i=0;
     //echo $d_email;
@@ -68,6 +68,10 @@ if(isset($_SERVER['HTTP_REFERER'])) {
                 $rate=$rate+(float)$rq->getDevRating();
                 //echo $rate;
                 $i=$i+1;
+                if ((int)($rq->getDevRating())>=4){
+                    array_push($result123,$rq);
+
+                }
             }
         }
         //$resultLists123.="<tr>";
@@ -200,7 +204,22 @@ if(isset($_SERVER['HTTP_REFERER'])) {
                         </div>
                     </div>
                     <div class="col-md-6" id="timeline123">
-                        <?php echo $resultLists123 ?>
+                        <?php 
+                            foreach($result123 as $row){
+                                echo "<p>";
+                                echo "Description";
+                                echo "</p>";
+                                echo "<p>";
+                                echo $row->getDescription();
+                                echo "</p>";
+                                echo "<p>";
+                                echo "Rating";
+                                echo "</p>";
+                                echo "<p>";
+                                echo $row->getDevRating();
+                                echo "</p>";
+                            }
+                        ?>
                     </div>
                 </div>
             </form>           

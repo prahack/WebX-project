@@ -91,7 +91,7 @@
                         echo "<div class='card'>";
                             echo "<p>";
                                 echo "Developer's Name : ";
-                                echo "<a href='view_profile.php?email=$d_email'>";
+                                echo "<a href='view_developer_profile.php?email=$d_email'>";
                                 echo $req->getDevName();
                                 echo "</a>";
                             echo "</p>";
