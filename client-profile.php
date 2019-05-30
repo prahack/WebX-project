@@ -1,6 +1,8 @@
 <?php  session_start(); 
 require_once ('class.hashlist.php');
-  require_once ('class.Database.php');?>  
+  require_once ('class.Database.php');
+  require_once ('class.Request.php');
+  ?>  
     
 <!--php require_once('project/inc/connection.php'); ?--->
 <!--?php require_once('project/inc/functions.php'); ?-->
@@ -32,7 +34,32 @@ require_once ('class.hashlist.php');
         //$image = '<img src = "data:image/jpeg;base64,'.base64_encode($user['profile_photo']).'" height="200" width = "200"/>';
     }
     //verify_query($result_set);
-    
+    $query12 = "SELECT * FROM objreq";    
+    $result_set12 = mysqli_query($connection,$query12);
+    $resultLists123="";
+    $rate=0;
+    $i=0;
+    //echo $d_email;
+    while($r=mysqli_fetch_array($result_set12,MYSQLI_ASSOC)){
+        $req=$r['req'];
+        $rq=unserialize($req);
+        if($rq->getClientEmail()==$email){
+            //echo $rate;
+            if($rq->getClientRating()!="not yet"){
+                $rate=$rate+(float)$rq->getClientRating();
+                //echo $rate;
+                $i=$i+1;
+            }
+        }
+        //$resultLists123.="<tr>";
+        //$description123=$r['description'];
+        //$resultLists123.="{$description123}";
+        //$resultLists123.="</tr>";
+        //$resultLists123.="<br></br>";
+    }
+    if ($i !=0){
+        $rate=round($rate/$i,1);
+    } 
   
 
 	
@@ -77,7 +104,7 @@ require_once ('class.hashlist.php');
                                         <?php echo $username;?>
                                     </h5>
                                     
-                                    <p class="proile-rating">RANKINGS : <span><?php echo $ranking ?></span></p>
+                                    <p class="proile-rating">Rating : <span><?php echo $rate ?></span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
