@@ -102,7 +102,7 @@
         
         <div class="input-group">
             <label>Username</label>
-            <input type="text" name="username" value=<?php echo $username; ?>>
+            <input type="text" pattern="[a-zA-Z0-9-]+" name="username" value=<?php echo $username; ?>>
         </div>
         <div class="input-group">
             <label>Email</label>
