@@ -100,6 +100,7 @@ if(isset($_SERVER['HTTP_REFERER'])) {
 	<title>View Profile</title>
 
     <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="view_developer_profile.css">
 </head>
 <body>
 	<header>
@@ -206,18 +207,21 @@ if(isset($_SERVER['HTTP_REFERER'])) {
                     <div class="col-md-6" id="timeline123">
                         <?php 
                             foreach($result123 as $row){
+                                echo "<div class='raw'>";
+                    echo "<div class='column'>";
+                        echo "<div class='card'>";
                                 echo "<p>";
-                                echo "Description";
-                                echo "</p>";
-                                echo "<p>";
+                                echo "Description : ";
                                 echo $row->getDescription();
                                 echo "</p>";
                                 echo "<p>";
-                                echo "Rating";
-                                echo "</p>";
-                                echo "<p>";
+                                echo "Rating : ";
                                 echo $row->getDevRating();
                                 echo "</p>";
+                                echo "</div>";
+                        echo "<br>";
+                    echo "</div>";
+                echo "</div>";
                             }
                         ?>
                     </div>
