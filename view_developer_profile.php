@@ -1,5 +1,6 @@
 <?php  session_start(); 
   require_once ('class.Database.php');
+  require_once ('class.Request.php');
 ?>
 <!--php require_once('project/inc/connection.php'); ?--->
 <!--?php require_once('project/inc/functions.php'); ?-->
@@ -46,17 +47,33 @@ $d_email=$_GET['email'];
         $_SESSION['project_type']="Video/Sort Film";
     }
 
-    $query12 = "SELECT * FROM requests WHERE developers_email= '{$email}' LIMIT 5";    
+    $query12 = "SELECT * FROM objreq";    
     $result_set12 = mysqli_query($connection,$query12);
     $resultLists123="";
-    while($r=mysqli_fetch_assoc($result_set12)){
-        $resultLists123.="<tr>";
-        $description123=$r['description'];
-        $resultLists123.="{$description123}";
-        $resultLists123.="</tr>";
-        $resultLists123.="<br></br>";
+    $rate=0;
+    $i=0;
+    //echo $d_email;
+    while($r=mysqli_fetch_array($result_set12,MYSQLI_ASSOC)){
+        $req=$r['req'];
+        $rq=unserialize($req);
+        if($rq->getDevEmail()==$d_email){
+            //echo $rate;
+            if($rq->getDevRating()!="not yet"){
+                $rate=$rate+(float)$rq->getDevRating();
+                //echo $rate;
+                $i=$i+1;
+            }
+        }
+        //$resultLists123.="<tr>";
+        //$description123=$r['description'];
+        //$resultLists123.="{$description123}";
+        //$resultLists123.="</tr>";
+        //$resultLists123.="<br></br>";
     }
-
+    if ($i !=0){
+        $rate=round($rate/$i,1);
+    }
+    //echo $rate;
     $sss="";
         $i = 1;
         while($i <= $ranking){
@@ -103,7 +120,7 @@ $d_email=$_GET['email'];
                                     <h6>
                                        <?php echo  $proffesion ?>
                                     </h6>
-                                    <p class="proile-rating">RANKINGS : <span><?php echo $sss ?></span></p>
+                                    <p class="proile-rating">Rating: <span><?php echo $rate ?></span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" id="about">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
