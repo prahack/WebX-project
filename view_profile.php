@@ -97,8 +97,9 @@ $d_email=$_GET['email'];
 	<header>
 		<div class="appname">i-Connect</div>
 		<div class="loggedin">Welcome <?php echo $_SESSION['username'];?>! <a href="login.php">Log Out</a></div>
-	</header>
-
+    </header>
+    <button class="button3" style="vertical-align:middle; float:right;"><span><a href="request_box.php?" style= "float:right;">Back</a>
+</span></button>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
