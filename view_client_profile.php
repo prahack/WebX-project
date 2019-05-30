@@ -1,5 +1,6 @@
 <?php  session_start(); 
   require_once ('class.Database.php');
+  require_once ('class.Request.php');
 ?>
 <!--php require_once('project/inc/connection.php'); ?--->
 <!--?php require_once('project/inc/functions.php'); ?-->
@@ -33,6 +34,33 @@ $d_email=$_GET['email'];
     //$image = '<img src = "data:image/jpeg;base64,'.base64_encode($user['Profile_Photo']).'" height="200" width = "200"/>';
     //$_SESSION['developer_name']=$name;
     //$_SESSION['developer_email']=$email;
+
+    $query12 = "SELECT * FROM objreq";    
+    $result_set12 = mysqli_query($connection,$query12);
+    $resultLists123="";
+    $rate=0;
+    $i=0;
+    //echo $d_email;
+    while($r=mysqli_fetch_array($result_set12,MYSQLI_ASSOC)){
+        $req=$r['req'];
+        $rq=unserialize($req);
+        if($rq->getClientEmail()==$d_email){
+            //echo $rate;
+            if($rq->getClientRating()!="not yet"){
+                $rate=$rate+(float)$rq->getClientRating();
+                //echo $rate;
+                $i=$i+1;
+            }
+        }
+        //$resultLists123.="<tr>";
+        //$description123=$r['description'];
+        //$resultLists123.="{$description123}";
+        //$resultLists123.="</tr>";
+        //$resultLists123.="<br></br>";
+    }
+    if ($i !=0){
+        $rate=round($rate/$i,1);
+    }
 
     $sss="";
         $i = 1;
@@ -78,7 +106,7 @@ $d_email=$_GET['email'];
                                         <?php echo $name;?>
                                     </h5>
                                     
-                                    <p class="proile-rating">RANKINGS : <span><?php echo $sss ?></span></p>
+                                    <p class="proile-rating">Rating : <span><?php echo $rate ?></span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" id="about">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
