@@ -143,3 +143,43 @@ header .loggedin{
     border:  1px solid #005c99;
     border-radius: 15px;
 }
+.button3 {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: white;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 3px;
+    width: 135px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .button3 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button3 span:before {
+    content: '\00ab';
+    color: #000099;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 200px;
+    transition: 0.5s;
+  }
+  
+  .button3:hover span {
+    padding-left: 20px;
+  }
+  
+  .button3:hover span:before {
+    opacity: 1;
+    left: 0;
+  }
