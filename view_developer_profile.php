@@ -6,6 +6,12 @@
 <?php
 $d_email=$_GET['email'];
 ?>
+<?php
+$previous = "javascript:history.go(-1)";
+if(isset($_SERVER['HTTP_REFERER'])) {
+    $previous = $_SERVER['HTTP_REFERER'];
+}
+?>
 <?php 
 	//checking if a user is logged in
 	if (!isset($_SESSION['username'])){
@@ -79,7 +85,8 @@ $d_email=$_GET['email'];
 		<div class="appname">i-Connect</div>
 		<div class="loggedin">Welcome <?php echo $_SESSION['username'];?>! <a href="login.php">Log Out</a></div>
 	</header>
-
+    <button class="button3" style="vertical-align:middle; float:right;"><span><a href="<?= $previous ?>">Back</a>
+</span></button>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
