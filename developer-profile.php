@@ -60,17 +60,18 @@ require_once ('class.Database.php');?>
             //$resultLists123.="<br></br>";
         }
         if ($i !=0){
-            $rate=round($rate/$i,1);
+            $rate=round($rate/$i,0);
         }
 
         $sss="";
         $i = 1;
-        while($i <= $ranking){
+        $rate=(int)$rate;
+        while($i <= $rate){
             $i++;
-            $sss.="<span style='font-size:50px;'>&#9733;</span>";
+            $sss.="<span style='font-size:40px;'>&#9733;</span>";
 }
     
-
+$sss.=" ";
         $image = '<img src = "data:image/jpeg;base64,'.base64_encode($user['profile_photo']).'" height="200" width = "200"/>';
     }
     //verify_query($result_set);
@@ -122,14 +123,14 @@ require_once ('class.Database.php');?>
                                     <h6>
                                        <?php echo  $proffesion ?>
                                     </h6>
-                                    <p class="proile-rating">Rating : <span><?php echo $rate ?></span></p>
+                                    <p class="proile-rating"><b>Rating : </b><span><?php echo $sss;
+                                    echo $rate;
+                                    ?></span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                                </li>
+                                
                             </ul>
                         </div>
                     </div>
