@@ -39,10 +39,38 @@ require_once ('interface.ViewAdapter.php');
     </form>
     
     <?php
-    
-    $output = NULL;
+    function find($search){
+        if(strstr($search,"@")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+ $output = NULL;
+    /*if(isset($_POST['submit'])){
+        //echo "hsbcegnu";
+        $search=mysqli_real_escape_string($connection,$_POST['search']);
+        //echo $search;
+        
+        if (find($search)) {
+            echo "true";
+            $s=new SearchDeveloper(new SearchByEmail());
+            $s->search($search,'AndroidDeveloper');
+        }/*
+            
+        }else{
+            $s=new SearchDeveloper(new SearchByName());
+            $s->search($search,'AndroidDeveloper');
+        }
+    }*/
+
+
+
+   
     if (isset($_POST['submit'])){
         $search=mysqli_real_escape_string($connection,$_POST['search']);
+        //echo $search;
         //connect to the database
         //$mysqli = mysqli_connect("localhost","root","","registration");
         //test if connection failed
@@ -54,10 +82,14 @@ require_once ('interface.ViewAdapter.php');
         $resultSet = mysqli_query($connection,$query);
         if(mysqli_num_rows($resultSet)>0){
             while($row = $resultSet->fetch_assoc()){
+                if($row['developer_type']=='VedioEditor'){
                 $d_email=$row['email'];
                 $d_username=$row['username'];
                 $output = "Developer's Name : $d_username <br />Developer's email : $d_email";
+            }else{
+                $output = "No results";
             }
+        }
         }else{
             $output = "No results";
         }

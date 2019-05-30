@@ -1,5 +1,5 @@
 <?php
 interface Search{
-    public function search(String $keyword);
+    public function search(String $keyword,String $type);
 }
 ?>

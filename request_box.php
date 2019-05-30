@@ -112,7 +112,7 @@
                                 echo $req->returnState()->getState();
                             echo "</p>";
                             echo "<p>";
-                            echo "Developer Rating         :";
+                            echo "Developer rated you as        :";
                             if($req->returnState()->getState()=='finished' and $req->getDevRating()=='not yet' ){
                                 $num=$row['id'];
                                 echo "<form name='row' action='request_box.php' method=post>";
@@ -127,7 +127,7 @@
                                 echo "<input type='submit' id=$num name=$num value='Rate' href='location.reload()'/>";
                                 echo "</form>";
                             }else{
-                                echo $req->getDevRating();
+                                echo $req->getClientRating();
                             }
                             echo "</p>";
                             echo "<p>";
@@ -170,7 +170,7 @@
                         $rating=mysqli_real_escape_string($connection,$_POST['rate']);
                         //echo $rating;
                         if($rating=='Rate Developer'){
-                            print('xxx');
+                           // print('xxx');
                         }else{
                         $req->setDevRating($rating);
                         $req=serialize($req);

@@ -49,8 +49,14 @@
     <article>
 <div class="row">
   <div class="column side">
-    <h2>Side</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+    <h2>As a developer,</h2>
+    <p>Choose a professional and friendly photo.</p>
+        <p>Keep your title short and sweet.</p>
+        <p>Showcase your experties in the overview section.</p>
+        <p>Make your skills section work for you.</p>
+        <p>Tell your story by showing your best work in your portfolid.</p>
+        <p>Link other accounts to your profile.</p>
+        <p>Show off your previous success stories in your employment history.</p>
   </div>
   
   <div class="column middle">
@@ -124,8 +130,12 @@ function showSlides() {
   </div>
   
   <div class="column side">
-    <h2>Side</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+    <h2>As a client,</h2>
+    <p>Plan the attendees.</p>
+        <p>Begin with instroduction.</p>
+        <p>Give an over view of the project.</p>
+        <p>Take the time to talk tech and ask questions.</p>
+        <p>Find out what the developer needs from you.</p>
   </div>
 </div>
 

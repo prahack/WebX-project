@@ -29,7 +29,7 @@
     <?php endif ?>
 
 <div class="header">
-  <h1>i-Connect :)</h1>
+  <h1>Connect-in</h1>
 </div>
 <div class="topnav">
   <a class="active" href="index.php">Home</a>

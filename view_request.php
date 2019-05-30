@@ -110,12 +110,12 @@
                             }
                             echo "</p>";
                             echo "<p>";
-                            echo "Client Rating         :";
+                            echo "Client rated you as         :";
                             if($req->returnState()->getState()=='finished' and $req->getClientRating()=='not yet' ){
                                 $num=$row['id'];
                                 echo "<form name='row' action='view_request.php' method=post>";
                                 echo "<select name='rate'>";
-                                echo "<option>Rate Developer</option>";
+                                echo "<option>Rate Client</option>";
                                 echo "<option value='1'>1</option>";
                                 echo "<option value='2'>2</option>";
                                 echo "<option value='3'>3</option>";
@@ -125,7 +125,7 @@
                                 echo "<input type='submit' id=$num name=$num value='Rate' href='javascript:location.reload()'/>";
                                 echo "</form>";
                             }else{
-                                echo $req->getClientRating();
+                                echo $req->getDevRating();
                             }
                             echo "</p>";
                         echo "</div>";
