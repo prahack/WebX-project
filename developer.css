@@ -99,7 +99,7 @@ main {
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
     position: fixed; left: 0; right:0;bottom: 0;
   width:100%;
-  height: 150px;
+  height: 100px;
   }
   footer a {
     border-bottom: 1px solid #666;

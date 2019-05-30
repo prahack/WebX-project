@@ -67,7 +67,7 @@
 </article>
 </main> 
 <footer>
-<p>
+<p style="margin-top: 3%;">
         WebX | Moratuwa | 2 729 729
     </p>
     
