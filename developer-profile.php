@@ -45,7 +45,7 @@ require_once ('class.Database.php');?>
         while($r=mysqli_fetch_array($result_set12,MYSQLI_ASSOC)){
             $req=$r['req'];
             $rq=unserialize($req);
-            if($rq->getDevEmail()==$d_email){
+            if($rq->getDevEmail()==$email){
                 //echo $rate;
                 if($rq->getDevRating()!="not yet"){
                     $rate=$rate+(float)$rq->getDevRating();
