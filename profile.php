@@ -1,46 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<?php 
-require_once ('class.Database.php');
-?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="uza - Model Agency HTML5 Template">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<?php 
-    $db = Database::getInstance();
-    $connection = $db->getConnection();
-?>
+    <!-- Title -->
+    <title>Web-X project</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="./img/core-img/favicon.ico">
 
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 
-
-
-
-
-
-<!DOCTYPE HTML>
-<html>
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Web-X project</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="freehtml5.co" />
-
-	<!-- 
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FreeHTML5.co
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
-  	<!-- Facebook and Twitter integration -->
+    <!--//////////////////////////////////////////////////////////////////// -->
+    <!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
@@ -55,24 +32,23 @@ require_once ('class.Database.php');
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animateProfile.css">
+	<link rel="stylesheet" href=".profile-master/css1/animate.css">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href=".profile-master/css1/icomoon.css">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href=".profile-master/css1/bootstrap.css">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/styleProfile.css">
+	<link rel="stylesheet" href="profile.css">
 
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+    <script src=".profile-master/js/modernizr-2.6.2.min.js"></script>
+    <script src="js/main.js"></script>
+    <!--//////////////////////////////////////////////////////////// -->
 
-	</head>
-	<body>
+</head>
+
+<body>
     <!-- Preloader -->
     <div id="preloader">
         <div class="wrapper">
@@ -103,7 +79,6 @@ require_once ('class.Database.php');
 
     <!-- ***** Header Area Start ***** -->
     <header class="header-area">
-    <link rel="stylesheet" href="style.css">
             <!-- Main Header Start -->
             <div class="main-header-area">
                 <div class="classy-nav-container breakpoint-off">
@@ -174,12 +149,12 @@ require_once ('class.Database.php');
     
                                 <!-- Profile -->
                                 <div class="get-a-quote">
-                                    <a href="#" class="btn uza-btn">Box</a>
+                                    <a href="#" class="btn uza-btn" position:centre>Request Box</a>
                                 </div>
     
                                 <!-- Login / Register -->
                                 <div class="login-register-btn mx-3">
-                                    <a href="login.php">Logout<i class="icon_lock_alt"></i></a>    
+                                    <a href="login.php">Logout<i class="icon_lock"></i></a>    
                                 </div>
     
                                 <!-- Search Icon -->
@@ -222,15 +197,16 @@ require_once ('class.Database.php');
     <!-- ***** Breadcrumb Area End ***** -->
 
     <!-- ***** Profile Area Start ***** -->
+
 	<div id="page">	
-	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
+	<section id="fh5co-section" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(img/profile-img/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t js-fullheight">
 						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-							<div class="profile-thumb" style="background: url(images/user-3.jpg);"></div>
+							<div class="profile-thumb" style="background: url(img/profile-img/user-3.jpg);"></div>
 							<h1><span>Louie Jie Mahusay</span></h1>
 							<h3><span>Web Developer </span></h3>
 							<p>
@@ -246,7 +222,7 @@ require_once ('class.Database.php');
 				</div>
 			</div>
 		</div>
-	</header>
+</section>
 
 	<div id="fh5co-about" class="animate-box">
 		<div class="container">
@@ -258,11 +234,10 @@ require_once ('class.Database.php');
 			<div class="row">
 				<div class="col-md-4">
 					<ul class="info">
-						<li><span class="first-block">username:</span><span class="second-block">Louie Jie Mahusay</span></li>
+						<li><span class="first-block">Full Name:</span><span class="second-block">Louie Jie Mahusay</span></li>
 						<li><span class="first-block">Phone:</span><span class="second-block">+ 1235 2355 98</span></li>
 						<li><span class="first-block">Email:</span><span class="second-block">info@yoursite.com</span></li>
-						<li><span class="first-block">profession:</span><span class="second-block">aaaaaaa</span></li>
-						<li><span class="first-block">linkedIn:</span><span class="second-block">info@yoursite.linkedIn</span></li>
+						<li><span class="first-block">Address:</span><span class="second-block">198 West 21th Street, Suite 721 New York NY 10016</span></li>
 					</ul>
 				</div>
 				<div class="col-md-8">
@@ -376,10 +351,8 @@ require_once ('class.Database.php');
 	</div>
 
 	</div>
-	
 
-
-	<!-- ***** Profile Area End ***** -->
+    <!-- ***** Profile Area End ***** -->
 
     <!-- ***** Footer Area Start ***** -->
     <footer class="footer-area section-padding-80-0">
@@ -507,26 +480,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- Main -->
 	<script src=".profile-master/js/main.js"></script>
 <!--//////////////////////////////////////////////-->
-	
-	<!-- jQuery -->
-	<script src="jsProfile/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="jsProfile/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="jsProfile/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="jsProfile/jquery.waypoints.min.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="jsProfile/jquery.stellar.min.js"></script>
-	<!-- Easy PieChart -->
-	<script src="jsProfile/jquery.easypiechart.min.js"></script>
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="jsProfile/google_map.js"></script>
-	
-	<!-- Main -->
-	<script src="jsProfile/main.js"></script>
+</body>
 
-	</body>
 </html>
-
