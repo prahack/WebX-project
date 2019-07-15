@@ -1,4 +1,5 @@
 <?php
+require_once('class.PendingState.php');
 date_default_timezone_set("Asia/Colombo");
 class Request{
     private $id;
@@ -13,8 +14,9 @@ class Request{
     private $clientRating;
     private $devRating;
     private $requestedTime;
+    private $projectType;
 
-    public function __construct($id,$clientEmail,$clientName,$devEmail,$devName,$duration,$description){
+    public function __construct($id,$clientEmail,$clientName,$devEmail,$devName,$duration,$description,$projectType){
         $this->id=$id;
         $this->devEmail=$devEmail;
         $this->devName=$devName;
@@ -22,6 +24,7 @@ class Request{
         $this->clientName=$clientName;
         $this->duration=$duration;
         $this->description=$description;
+        $this->projectType=$projectType;
         $this->state=new PendingState();
         $this->timeStamp=time();
         $this->clientRating="not yet";
@@ -87,6 +90,10 @@ class Request{
 
     public function getRTime(){
         return $this->requestedTime;
+    }
+
+    public function getRType(){
+        return $this->projectType;
     }
 }
 

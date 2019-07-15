@@ -1,110 +1,399 @@
 <?php include('server.php'); ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>User Registration System</title>
-    <link rel="stylesheet" href="register.css">
+    <meta charset="UTF-8">
+    <meta name="description" content="uza - Model Agency HTML5 Template">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Web-X project</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./img/core-img/favicon.ico">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!--link rel="stylesheet" href="register.css"-->
+
 </head>
-<body style="background:url(images/bg1.jpg);background-repeat:no-repeat;background-size:100% ">
-<div class="topic">
-    <h1>EM-ployer</h1>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="wrapper">
+            <div class="cssload-loader"></div>
+        </div>
     </div>
-    <div class="headerReg">
-    <h2>Register</h2>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area">
+            <!-- Main Header Start -->
+            <div class="main-header-area">
+                <div class="classy-nav-container breakpoint-off">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between" id="uzaNav">
+    
+                        <!-- Logo -->
+                        <a class="nav-brand" href="index.php"><img src="./img/core-img/logo.png" alt=""></a>
+    
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+    
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+    
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li><a href="./index.php">Home</a></li>
+                                    <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="./index.php">- Home</a></li>
+                                            <li><a href="./start-exploring.php">- Start Exploring</a></li>
+                                            <li><a href="./about.php">- About</a></li>
+                                            <li><a href="./services.php">- Services</a></li>
+                                            <li><a href="#">- Developer List</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="./allDevelopers.php">- All Developers</a>
+                                                        <ul class="dropdown">
+                                                            <li><a href="./android.php">- Android Developing</a></li>
+                                                            <li><a href="./graphic.php">- Graphic Designing</a></li>
+                                                            <li><a href="./ios.php">- iOS Developing</a></li>
+                                                            <li><a href="./website.php">- Website Developing</a></li>
+                                                            <li><a href="./video.php">- Video Editing</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!--li><a href="#">- Dropdown Item</a></li>
+                                                    <li><a href="#">- Dropdown Item</a></li-->
+                                                </ul>
+                                            </li>
+                                            <li><a href="./portfolio.php">- Portfolio</a></li>
+                                         
+                                        </ul>
+                                    </li>
+                                    <!--li><a href="./portfolio.php">Portfolio</a></li-->
+                                    <li><a href="./about.php">About</a></li>
+                                    <li><a href="#">DeveloperList</a>
+                                        <ul class="dropdown">
+                                            <li><a href="./allDevelopers.php">- All Developers</a></li>
+                                            <li><a href="./android.php">- Android Developing</a></li>
+                                            <li><a href="./graphic.php">- Graphic Designing</a></li>
+                                            <li><a href="./ios.php">- iOS Developing</a></li>
+                                            <li><a href="./website.php">- Website Developing</a></li>
+                                            <li><a href="./video.php">- Video Editing</a></li>
+                                        </ul>
+                                    </li>
+                                 
+                                </ul>
+                                <div class="login-register-btn mx-3">
+                                <a href="login.php">Login<i class="icon_lock-open_alt"></i></a>    
+                            </div>
+                            <!-- Search Icon -->
+                            <div class="search-icon" data-toggle="modal" data-target="#searchModal">
+                                <i class="icon_search"></i>
+                            </div>
+                        </div>
+                        <!-- Nav End -->
+    
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Breadcrumb Area Start ***** -->
+    <div class="breadcrumb-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-end">
+                <div class="col-12">
+                    <div class="breadcumb--con">
+                        <h2 class="title">Register</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.php"><i class="fa fa-home"></i> Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Register <i class="icon_gift_alt"></i></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Curve -->
+        <div class="breadcrumb-bg-curve">
+            <img src="./img/core-img/curve-5.png" alt="">
+        </div>
     </div>
-    <form method="post" action="register.php" enctype="multipart/form-data">
-        <?php include('errors.php'); ?>
-        <div class="input-group">
-            <label>Username</label>
-            <input type="text" pattern="[a-zA-Z0-9-]+" placeholder="Pick a username with only English letters and numbers" name="username" value="<?php echo $username; ?>" required>
-        </div>
-        <div class="input-group">
-            <label>Email</label>
-            <input type="email" placeholder="you@example.com"  name="email" value="<?php echo $email; ?>" required>
-        </div>
+    <!-- ***** Breadcrumb Area End ***** -->
 
-        <div class="input-group">
-            <label>Phone</label>
-            <input type="tel" placeholder="0XXXXXXXXX" pattern="[0]{1}[0-9]{9}" name="phone" pattern="/[a-z0-9_\-\+]+@[a-z0-9\-]+\.([a-z]{2,3})(?:\.[a-z]{2})?/i" value="<?php echo $phone;?>"
-    required>
-        </div>
+    <!-- ***** Register Area Start ***** -->
+    <!--div class="headerReg">
+            <h2>Register</h2>
+            </div-->
+    <section class="uza-contact-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-between">
+                <!-- Contact Form -->
+                <div class="col-12 col-lg-8">
+                    <div class="uza-contact-form mb-80">
+                        <div class="contact-heading mb-50">
+                            <h4>Thank you for your interest. <br>Please fill out the form below to register for Connect
+                                in.</h4>
+                        </div>
+                        <form method="post" action="register.php" enctype="multipart/form-data">
+                            <?php include('errors.php'); ?>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label>
+                                            <h6>Username</h6>
+                                        </label><br>
+                                        <input type="text" class="form-control mb-30" pattern="[a-zA-Z0-9-]+"
+                                            placeholder="Username with only English letters and numbers" name="username"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label>
+                                            <h6>Email</h6>
+                                        </label><br>
+                                        <input type="email" class="form-control mb-30" placeholder="you@example.com"
+                                            name="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label>
+                                            <h6>Phone</h6>
+                                        </label><br>
+                                        <input type="tel" class="form-control mb-30" placeholder="0XXXXXXXXX"
+                                            pattern="[0]{1}[0-9]{9}" name="phone"
+                                            pattern="/[a-z0-9_\-\+]+@[a-z0-9\-]+\.([a-z]{2,3})(?:\.[a-z]{2})?/i"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label>
+                                            <h6>Password (8 characters minimum)</h6>
+                                        </label><br>
+                                        <input type="password" class="form-control mb-30"
+                                            placeholder="Create a password" name="password_1" minlength="8" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label>
+                                            <h6>Confirm Password</h6>
+                                        </label><br>
+                                        <input type="password" class="form-control mb-30"
+                                            placeholder="Re-enter password" name="password_2">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <select name="type" id="dropdown">
+                                        <option>Select Type</option>
+                                        <option value="developer">Developer</option>
+                                        <option value="client">Client</option>
+                                    </select>
 
-        <div class="input-group">
-            <label>Password (8 characters minimum)</label>
-            <input type="password" placeholder="Create a password" name="password_1"  minlength="8" required>
-        </div>
-        <div class="input-group">
-            <label>Confirm Password</label>
-            <input type="password" placeholder="Re-enter password" name="password_2">
-        </div>
-        <div class="input-group1">
-            <select name="type" id="dropdown">
-                <option>Select Type</option>
-                <option value="developer">Developer</option>
-                <option value="client">Client</option>
-            </select>
+                                    <select name="field" id="developerDropdown">
+                                        <option>Select Field</option>
+                                        <option value="AndroidDeveloper">Android-Developer</option>
+                                        <option value="GraphicDesigner">Graphic-Designer</option>
+                                        <option value="IOSDeveloper">iOS-Developer</option>
+                                        <option value="WebsiteDeveloper">Website-Developerr</option>
+                                        <option value="VedioEditor">Vedio-Editor</option>
+                                    </select>
+                                </div>
 
-            <select name="field" id="developerDropdown">
-                <option>Select Field</option>
-                <option value="AndroidDeveloper">Android-Developer</option>
-                <option value="GraphicDesigner">Graphic-Designer</option>
-                <option value="IOSDeveloper">iOS-Developer</option>
-                <option value="WebsiteDeveloper">Website-Developerr</option>
-                <option value="VedioEditor">Vedio-Editor</option>
-            </select>
+                                <div class="col-lg-8">
+                                    <div class="form-group" id="linkedInDiv">
+                                        <label>
+                                            <h6>LinkedIn</h6>
+                                        </label><br>
+                                        <input type="text" class="form-control mb-30" placeholder="LinkedInProfile"
+                                            name="linkedIn" style="width:450px" id="linkedInDiv">
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn uza-btn btn-3 mt-15" type="submit" name="register">Register</button>
+                                </div>
+
+                                <br>
+                                <p>Already a member? <a href="login.php">Login</a></p>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Single Contact Card -->
+                <div class="col-12 col-lg-3">
+                    <div class="contact-sidebar-area mb-80">
+                        <!-- Single Sidebar Area -->
+                        <!--div class="single-contact-card mb-50">
+                            <h4>Contact Us</h4>
+                            <h3>2 729 729</h3>
+                            <h6>connectin@gmail.com</h6>
+                            <h6>Mon - Fri: 9:00 - 19:00 <br>Closed on Weekends</h6>
+                        </div-->
+
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="input-group" id="linkedInDiv">
-            <label>LinkedIn</label>
-            <input type="text" placeholder="LinkedInProfile" name="linkedIn" style="width:450px"  id="linkedInDiv">
-
-        </div>
-
-        
-            
-       
-        
-        <!--<div class="input-group">
-            <label>Profile Photo</label>
-            <input type="file" name="file">
-        </div>-->
-        
-
-        <div class="input-group">
-            <button type="submit" style= "background-color: #28a745; background-image: linear-gradient(-180deg,#34d058,#28a745 90%); color: #fff" name="register" class="btn" >Register </button>
-        </div>
-        <p>
-        Already a member? <a href="login.php">Sign in</a>
-        </p>
-    </form>
-    <footer>
-        <p>
-            WebX | Moratuwa | 2 729 729
-        </p>
-    </footer>
-</body>
-</html>
+    </section>
 
 
 <script>
- document.getElementById("developerDropdown").style.display="none";
- document.getElementById("linkedInDiv").style.display="none";
- document.getElementById("dropdown").addEventListener('change',notify);
+    document.getElementById("developerDropdown").style.display = "none";
+    document.getElementById("linkedInDiv").style.display = "none";
+    document.getElementById("dropdown").addEventListener('change', notify);
 
 
-  function notify(event){
-    var selected = document.getElementById("dropdown");
-    var selectedType = selected.options[selected.selectedIndex].text;
-    if (selectedType=="Developer"){
-        document.getElementById("developerDropdown").style.display="initial";
-        document.getElementById("linkedInDiv").style.display="initial";
-     
- }
-    else{
-        document.getElementById("developerDropdown").style.display="none";
-        document.getElementById("linkedInDiv").style.display="none";
+    function notify(event) {
+        var selected = document.getElementById("dropdown");
+        var selectedType = selected.options[selected.selectedIndex].text;
+        if (selectedType == "Developer") {
+            document.getElementById("developerDropdown").style.display = "initial";
+            document.getElementById("linkedInDiv").style.display = "initial";
+
+        }
+        else {
+            document.getElementById("developerDropdown").style.display = "none";
+            document.getElementById("linkedInDiv").style.display = "none";
+        }
     }
-  }
 
 
 </script>
+<!-- ***** Register Area End *****-->
+
+<!-- ***** Footer Area Start ***** -->
+<footer class="footer-area section-padding-80-0">
+    <div class="container">
+        <div class="row justify-content-between">
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-80">
+                    <!-- Widget Title -->
+                    <h4 class="widget-title">Contact Us</h4>
+
+                    <!-- Footer Content -->
+                    <div class="footer-content mb-15">
+                        <h3>2 729 729</h3>
+                        <p>University of Moratuwa <br> connectin@gmail.com</p>
+                    </div>
+                    <p class="mb-0">Mon - Fri: 9:00 - 19:00 <br>
+                        Closed on Weekends</p>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-80">
+                    <!-- Widget Title -->
+                    <h4 class="widget-title">Quick Link</h4>
+
+                    <!-- Nav -->
+                    <nav>
+                    <ul class="our-link">
+                            <li><a href="about.php">About Us</a></li>
+                            <li><a href="login.php">Forum LogIn</a></li>
+                            </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-80">
+                    <!-- Widget Title -->
+                    <h4 class="widget-title">Resources</h4>
+
+                    <!-- Nav -->
+                    <nav>
+                        <ul class="our-link">
+                            <li><a href="#">Customer Support</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Media &amp; Press</a></li>
+                            <li><a href="#">Our Team</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-80">
+                    <!-- Widget Title -->
+                    <h4 class="widget-title">About Us</h4>
+                    <p>We are a resourcefull team who interested to working with teams.</p>
+
+                    <!-- Copywrite Text -->
+                    <div class="copywrite-text mb-30">
+                        <p>&copy; Copyright 2019 <a href="#">Web-X team</a>.</p>
+                    </div>
+
+                    <!-- Social Info -->
+                    <div class="footer-social-info">
+                        <a href="#" class="facebook" data-toggle="tooltip" data-placement="top" title="Facebook"><i
+                                class="fa fa-facebook"></i></a>
+                        <a href="#" class="twitter" data-toggle="tooltip" data-placement="top" title="Twitter"><i
+                                class="fa fa-twitter"></i></a>
+                        <a href="#" class="pinterest" data-toggle="tooltip" data-placement="top" title="Pinterest"><i
+                                class="fa fa-pinterest"></i></a>
+                        <a href="#" class="instagram" data-toggle="tooltip" data-placement="top" title="Instagram"><i
+                                class="fa fa-instagram"></i></a>
+                        <a href="#" class="youtube" data-toggle="tooltip" data-placement="top" title="YouTube"><i
+                                class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-bottom: 30px;">
+
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved<i class="fa fa-heart-o"
+                aria-hidden="true"></i> by <a href="https://Web-X.com" target="_blank">Web-X</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </div>
+
+    </div>
+</footer>
+<!-- ***** Footer Area End ***** -->
+
+<!-- ******* All JS Files ******* -->
+<!-- jQuery js -->
+<script src="js/jquery.min.js"></script>
+<!-- Popper js -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- All js -->
+<script src="js/uza.bundle.js"></script>
+<!-- Active js -->
+<script src="js/default-assets/active.js"></script>
+
+</body>
+
+</html>
